@@ -7,19 +7,19 @@ internal class Controller
     {
         // read json file (student data)
         var persons =
-            ReadFromJson<PersonJson>(
+            ReadFromJson<StudentJsonData>(
                 @"database\students.json");
 
         // read json file (score data)
         var scores =
-            ReadFromJson<ScoreJson>(
+            ReadFromJson<ScoreJsonData>(
                 @"database\scores.json");
 
         // add persons to studentList with their info 
-        var studentList = new List<Person>();
+        var studentList = new List<Student>();
         foreach (var pj in persons)
         {
-            var tPerson = new Person(pj.FirstName, pj.LastName, pj.StudentNumber);
+            var tPerson = new Student(pj.FirstName, pj.LastName, pj.StudentNumber);
             studentList.Add(tPerson);
         }
 
