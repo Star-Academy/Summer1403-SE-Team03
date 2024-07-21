@@ -1,56 +1,55 @@
-﻿
-using System.Text.Json;
+﻿using System.Text.Json;
 using ConsoleApp1;
-using System.Linq;
 
-class main
+internal class Controller
 {
     public static void Main(string[] args)
     {
-        Person[] student;
-        
-        List<ScoreJson> scores = new List<ScoreJson>();
-        using (StreamReader r = new StreamReader(@"C:\Users\Mahdi\Desktop\code-star\phase1\ConsoleApp1\ConsoleApp1\database\scores.json")) {
-                 String json = r.ReadToEnd();
-                 scores = JsonSerializer.Deserialize<List<ScoreJson>>(json);
-        }   
-        // read json file
-        List<PersonJson> persons = new List<PersonJson>();
-        using (StreamReader r = new StreamReader(@"C:\Users\Mahdi\Desktop\code-star\phase1\ConsoleApp1\ConsoleApp1\database\students.json")) {
-            String json = r.ReadToEnd();
-            persons = JsonSerializer.Deserialize<List<PersonJson>>(json);
-        }
-        // read json file
+        // read json file (student data)
+        var persons =
+            ReadFromJson<PersonJson>(
+                @"database\students.json");
 
+        // read json file (score data)
+        var scores =
+            ReadFromJson<ScoreJson>(
+                @"database\scores.json");
 
-        List<Person> temp = new List<Person>();
-        foreach (var person in persons)
+        // add persons to studentList with their info 
+        var studentList = new List<Person>();
+        foreach (var pj in persons)
         {
-            Person tPerson = new Person(person.FirstName, person.LastName, person.StudentNumber);
-            temp.Add(tPerson);
-        }
-        
-        student = temp.ToArray(); //convert list to array to add scores in array with least complexity !
-
-        foreach (var person in scores)
-        {
-            student[person.StudentNumber - 1].studentGrades.Add(person.Lesson, person.Score);
+            var tPerson = new Person(pj.FirstName, pj.LastName, pj.StudentNumber);
+            studentList.Add(tPerson);
         }
 
-        foreach (var person in student)
-        {
-            person.GPA = person.studentGrades.Values.Sum() / person.studentGrades.Values.Count;
-        } //calculate GPA
-        var sortedStudent = student.OrderByDescending(p => p.GPA); 
+        // convert list to array to add scores in array with least complexity!
+        var studentArr = studentList.ToArray();
+
+        // add grades of each student using StudentNumber
+        foreach (var sj in scores) studentArr[sj.StudentNumber - 1].studentGrades.Add(sj.Lesson, sj.Score);
+
+        //calculate GPA
+        foreach (var p in studentArr)
+            p.GPA = p.studentGrades.Values.Sum() / p.studentGrades.Values.Count;
+
         // Sort the array with linq 
+        var sortedStudent = studentArr.OrderByDescending(p => p.GPA);
 
-        for (int i = 0; i < 3; i++)
-        {
-            Console.WriteLine(sortedStudent.ElementAt(i).ToString());
-            
-        }
         // CW students 
-        
+        for (var i = 0; i < 3; i++) Console.WriteLine(sortedStudent.ElementAt(i).ToString());
+        Console.WriteLine();
     }
-    
+
+    private static List<T> ReadFromJson<T>(string path)
+    {
+        var list = new List<T>();
+        using (var r = new StreamReader(path))
+        {
+            var json = r.ReadToEnd();
+            list = JsonSerializer.Deserialize<List<T>>(json);
+        }
+
+        return list;
+    }
 }
