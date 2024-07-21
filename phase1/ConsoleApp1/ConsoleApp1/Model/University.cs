@@ -1,5 +1,3 @@
-using System.Text;
-
 namespace ConsoleApp1;
 
 public class University
@@ -11,16 +9,14 @@ public class University
 
     public List<Student> Students { get; set; }
 
-    public void CalculateGPA()
+    public bool CalculateGPA()
     {
-        for (var i = 0; i < Students.Count; i++)
-            Students.ElementAt(i).GPA = Students.ElementAt(i).StudentGrades.Values.Sum() / Students.ElementAt(i).StudentGrades.Count;
+        foreach (var student in Students) student.GPA = student.StudentGrades.Values.Average();
+        return true;
     }
 
-    public IEnumerable<Student> GetTop3Student()
+    public IEnumerable<Student> GetTopStudent(int count)
     {
-        return Students.OrderByDescending(p => p.GPA).Take(3);
+        return Students.OrderByDescending(p => p.GPA).Take(count);
     }
-
-
 }

@@ -1,20 +1,14 @@
-using System.Runtime.InteropServices.JavaScript;
 using System.Xml.Linq;
 
 namespace ConsoleApp1;
 
 public class JsonReader
 {
-     
-    private static String  xmlFilePath = @"../../../app.config.xml";
-        
+    private static readonly string xmlFilePath = @"../../../app.config.xml";
 
-    
-
-    public static String ReadJsonFile(String path)
+    public static string ReadJsonFile(string path)
     {
         var doc = XDocument.Load(xmlFilePath);
         return doc.Root.Element("filePaths").Element(path).Value;
-        
     }
 }

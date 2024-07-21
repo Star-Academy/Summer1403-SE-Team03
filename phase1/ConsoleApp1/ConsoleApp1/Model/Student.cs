@@ -1,12 +1,10 @@
-using System.Text;
-
 namespace ConsoleApp1;
 
 public class Student
 {
     public Dictionary<string, double> StudentGrades = new();
 
-    public Student(string firstName, string lastName, int id , Dictionary<String,double> studentGrades)
+    public Student(string firstName, string lastName, int id, Dictionary<string, double> studentGrades)
     {
         Id = id;
         FirstName = firstName;
@@ -26,6 +24,4 @@ public class Student
     {
         return $"Id : {Id} \t - Full name : {FirstName} {LastName} \t - GPA : {GPA} ";
     }
-    
-    
 }
