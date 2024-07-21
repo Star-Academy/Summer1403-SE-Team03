@@ -6,5 +6,5 @@ obj/
 
 # Ignore everything in bin exept database folder
 bin/*
-!bin/bin/Debug/net8.0/database/
+
 
