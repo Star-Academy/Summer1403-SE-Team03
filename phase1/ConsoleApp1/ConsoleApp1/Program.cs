@@ -20,22 +20,22 @@ internal class Program
 
         var scores = scoreFileManger.ReadFromJson<ScoreJsonData>();
 
-        var studentList = new List<Student>();
-        for (var i = 0; i < persons.Count; i++)
+        var listStudent = from person in persons
+            join score in scores
+                on person.StudentNumber equals score.StudentNumber into studentScores
+            select new Student(
+                person.FirstName,
+                person.LastName,
+                person.StudentNumber,
+                studentScores.ToDictionary(s => s.Lesson, s => (double)s.Score)
+            );
+        var university = new University(listStudent.ToList());
+        university.CalculateGPA();
+        var topStudent = university.GetTop3Student();
+        foreach(var student in topStudent)
         {
-            var tPerson = new Student(persons.ElementAt(i).FirstName, persons.ElementAt(i).LastName,
-                persons.ElementAt(i).StudentNumber);
-            studentList.Add(tPerson);
+            Console.WriteLine(student.ToString());
         }
 
-        var studentArr = studentList.ToArray();
-
-        for (var i = 0; i < scores.Count; i++)
-            studentArr[scores.ElementAt(i).StudentNumber - 1].studentGrades
-                .Add(scores.ElementAt(i).Lesson, scores.ElementAt(i).Score);
-
-        var university = new University(studentArr);
-        university.CalculateGPA();
-        Console.WriteLine(university.GetTop3Student());
     }
 }
