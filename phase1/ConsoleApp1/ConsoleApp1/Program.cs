@@ -1,16 +1,21 @@
-﻿using ConsoleApp1;
+﻿using System.Resources;
+using ConsoleApp1;
 using ConsoleApp1.DataManager;
 
 internal class Program
 {
+    
     public static void Main(string[] args)
     {
-        var pathStudents = JsonReader.ReadJsonFile("nameDataFilePath");
-        var pathScore = JsonReader.ReadJsonFile("scoreDataFilePath");
+        
+        ResourceManager rm = new ResourceManager("ConsoleApp1.Properties.Resources", typeof(Program).Assembly);
 
+        string pathStudents = rm.GetString("student");
+        string pathScores = rm.GetString("score");
+        
         var students = FileManager.ReadFromJson<StudentJsonData>(pathStudents);
-        var scores = FileManager.ReadFromJson<ScoreJsonData>(pathScore);
-
+        var scores = FileManager.ReadFromJson<ScoreJsonData>(pathScores);
+        
         var listStudent = DataManager.GetStudentList(scores, students);
 
         var university = new University(listStudent.ToList());

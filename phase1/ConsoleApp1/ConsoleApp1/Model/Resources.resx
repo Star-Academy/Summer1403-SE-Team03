@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <root>
     <data name="score" xml:space="preserve">
-        <value>../../../database/scores.json</value>
-    </data>
+    <value>"../../../database/scores.json"</value>
+  </data>
     <data name="student" xml:space="preserve">
-        <value>../../../database/students.json</value>
-    </data>
+    <value>"../../../database/students.json"</value>
+  </data>
 </root>
