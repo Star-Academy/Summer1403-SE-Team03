@@ -1,0 +1,7 @@
+
+<configuration>
+<filePaths>
+    <nameDataFilePath>database\students.json</nameDataFilePath>
+    <scoreDataFilePath>database\scores.json</scoreDataFilePath>
+</filePaths>
+</configuration>

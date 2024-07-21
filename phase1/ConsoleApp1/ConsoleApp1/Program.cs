@@ -1,21 +1,25 @@
 ﻿using System.Text.Json;
 using ConsoleApp1;
+using System.Xml.Linq;
 
-internal class Controller
+
+internal class Program
 {
     public static void Main(string[] args)
     {
-        // read json file (student data)
-        var persons =
-            ReadFromJson<StudentJsonData>(
-                @"database\students.json");
+        string xmlFilePath = @"../../../app.config.xml"; 
 
-        // read json file (score data)
-        var scores =
-            ReadFromJson<ScoreJsonData>(
-                @"database\scores.json");
+        var doc = XDocument.Load(xmlFilePath);
 
-        // add persons to studentList with their info 
+        string pathStudents = doc.Root.Element("filePaths").Element("nameDataFilePath").Value;
+        string pathScore = doc.Root.Element("filePaths").Element("scoreDataFilePath").Value;
+
+
+        
+        var persons = ReadFromJson<StudentJsonData>(pathStudents);
+
+        var scores = ReadFromJson<ScoreJsonData>(pathScore);
+
         var studentList = new List<Student>();
         foreach (var pj in persons)
         {
@@ -23,20 +27,15 @@ internal class Controller
             studentList.Add(tPerson);
         }
 
-        // convert list to array to add scores in array with least complexity!
         var studentArr = studentList.ToArray();
 
-        // add grades of each student using StudentNumber
         foreach (var sj in scores) studentArr[sj.StudentNumber - 1].studentGrades.Add(sj.Lesson, sj.Score);
 
-        //calculate GPA
         foreach (var p in studentArr)
             p.GPA = p.studentGrades.Values.Sum() / p.studentGrades.Values.Count;
 
-        // Sort the array with linq 
         var sortedStudent = studentArr.OrderByDescending(p => p.GPA);
 
-        // CW students 
         for (var i = 0; i < 3; i++) Console.WriteLine(sortedStudent.ElementAt(i).ToString());
         Console.WriteLine();
     }
