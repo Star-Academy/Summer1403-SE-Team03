@@ -6,9 +6,9 @@ public class Student
 
     public Student(string firstName, string lastName, int id)
     {
-        this.Id = id;
-        this.FirstName = firstName;
-        this.LastName = lastName;
+        Id = id;
+        FirstName = firstName;
+        LastName = lastName;
     }
 
     public int Id { get; set; }
@@ -21,6 +21,6 @@ public class Student
 
     public string ToString()
     {
-        return $"1) Id : {Id} \t - Full name : {FirstName} {LastName} \t - GPA : {GPA} ";
+        return $"Id : {Id} \t - Full name : {FirstName} {LastName} \t - GPA : {GPA} ";
     }
 }
