@@ -1,34 +1,22 @@
 ﻿using System.Xml.Linq;
 using ConsoleApp1;
+using ConsoleApp1.DataManager;
 
 internal class Program
 {
     public static void Main(string[] args)
     {
-        var xmlFilePath = @"../../../app.config.xml";
-
-        var doc = XDocument.Load(xmlFilePath);
-
-        var pathStudents = doc.Root.Element("filePaths").Element("nameDataFilePath").Value;
-        var pathScore = doc.Root.Element("filePaths").Element("scoreDataFilePath").Value;
+        var pathStudents = JsonReader.ReadJsonFile("nameDataFilePath");
+        var pathScore = JsonReader.ReadJsonFile("scoreDataFilePath");
 
         var studentFileManger = new FileManager(pathStudents);
-
-        var persons = studentFileManger.ReadFromJson<StudentJsonData>();
-
         var scoreFileManger = new FileManager(pathScore);
-
+        
+        var students = studentFileManger.ReadFromJson<StudentJsonData>();
         var scores = scoreFileManger.ReadFromJson<ScoreJsonData>();
-
-        var listStudent = from person in persons
-            join score in scores
-                on person.StudentNumber equals score.StudentNumber into studentScores
-            select new Student(
-                person.FirstName,
-                person.LastName,
-                person.StudentNumber,
-                studentScores.ToDictionary(s => s.Lesson, s => (double)s.Score)
-            );
+        
+        List<Student> listStudent = DataManager.StudentList(scores, students);
+        
         var university = new University(listStudent.ToList());
         university.CalculateGPA();
         var topStudent = university.GetTop3Student();
