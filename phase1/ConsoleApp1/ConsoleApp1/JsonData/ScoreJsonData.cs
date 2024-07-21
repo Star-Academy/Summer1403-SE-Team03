@@ -1,6 +1,6 @@
 namespace ConsoleApp1;
 
-public class ScoreJsonData
+public sealed class ScoreJsonData
 {
     public int StudentNumber { get; set; }
     public string Lesson { get; set; }
