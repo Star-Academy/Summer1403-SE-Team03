@@ -11,7 +11,11 @@ internal class Program
     {
         String input = Console.ReadLine();
         EngineProcessor.SetInvertedIndexDocx();
-        var kds = SearchOperation.SearchText(input ,EngineProcessor.InvertedIndexDocx);
-        Console.WriteLine("sadsadas");
+        var result = SearchOperation.SearchText(input.ToUpper() ,EngineProcessor.InvertedIndexDocx);
+        foreach (var element in result) 
+        {
+            Console.WriteLine(element);
+        }
     }
+        
 }

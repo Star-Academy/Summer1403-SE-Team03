@@ -11,7 +11,7 @@ public class UpperCase
         {
             uppercaseOutput.Add(new DataFile(element.FileName , element.Data.ToUpper()));
         }
-
+        
         return uppercaseOutput;
     }
 }

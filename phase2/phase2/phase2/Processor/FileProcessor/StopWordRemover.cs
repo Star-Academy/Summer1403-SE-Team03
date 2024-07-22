@@ -9,6 +9,6 @@ public class StopWordRemover
         var result = new List<DataFile>();
 
 
-        return result;
+        return docx;
     }
 }

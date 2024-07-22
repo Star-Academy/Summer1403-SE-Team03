@@ -24,7 +24,6 @@ public class FileReader
         {
             data.Add(new DataFile(Path.GetFileName(file) ,File.ReadAllText(file)));
         }
-
         return data;
     }
 }

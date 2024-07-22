@@ -7,7 +7,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15a4b499-63f4-4c79-9fb1-e73dac3dd7ec" name="Changes" comment="" />
+    <list default="true" id="15a4b499-63f4-4c79-9fb1-e73dac3dd7ec" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.phase2/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.phase2/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.phase2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.phase2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/FileManager/FileReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/FileManager/FileReader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/Processor/FileProcessor/PunctuationRemover.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/Processor/FileProcessor/PunctuationRemover.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/Processor/FileProcessor/StopWordRemover.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/Processor/FileProcessor/StopWordRemover.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/Processor/FileProcessor/UpperCase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/Processor/FileProcessor/UpperCase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/Resources.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/Resources.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/Resources.resx" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/Resources.resx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/bin/Debug/net8.0/phase2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/bin/Debug/net8.0/phase2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/bin/Debug/net8.0/phase2.exe" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/bin/Debug/net8.0/phase2.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/bin/Debug/net8.0/phase2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/bin/Debug/net8.0/phase2.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.Resources.resources" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.Resources.resources" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.csproj.GenerateResource.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/phase2.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/ref/phase2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/ref/phase2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/refint/phase2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/Debug/net8.0/refint/phase2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/phase2.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/phase2.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/phase2.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/phase2.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phase2/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/phase2/obj/rider.project.restore.info" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +63,7 @@
     ".NET Project.phase2.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -39,9 +73,9 @@
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\User\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\User\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\User\\AppData\\Local\\Symbols\\src"
+      "C:\\Users\\Mahdi\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Mahdi\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\Mahdi\\AppData\\Local\\Symbols\\src"
     ]
   }
 }]]></component>
@@ -75,6 +109,7 @@
       <updated>1721639728691</updated>
       <workItem from="1721639729810" duration="67000" />
       <workItem from="1721639808620" duration="6387000" />
+      <workItem from="1721657811558" duration="2402000" />
     </task>
     <task id="LOCAL-00001" summary="phase 02 - add extra classes for processing on files and making invertedIndex">
       <option name="closed" value="true" />
@@ -106,37 +141,5 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="phase 02 - add extra classes for processing on files and making invertedIndex" />
     <option name="LAST_COMMIT_MESSAGE" value="phase 02 - add extra classes for processing on files and making invertedIndex" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/phase2/Program.cs</url>
-          <line>13</line>
-          <properties documentPath="C:\Users\User\Desktop\Summer1403-SE-Team03\phase2\phase2\phase2\Program.cs" initialLine="13" containingFunctionPresentation="Method 'Main'">
-            <startOffsets>
-              <option value="342" />
-            </startOffsets>
-            <endOffsets>
-              <option value="421" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/phase2/FileManager/FileReader.cs</url>
-          <line>19</line>
-          <properties documentPath="C:\Users\User\Desktop\Summer1403-SE-Team03\phase2\phase2\phase2\FileManager\FileReader.cs" initialLine="19" containingFunctionPresentation="Method 'ReadFilesFromFolder'">
-            <startOffsets>
-              <option value="438" />
-            </startOffsets>
-            <endOffsets>
-              <option value="439" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
