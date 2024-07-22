@@ -1,0 +1,17 @@
+﻿// See https://aka.ms/new-console-template for more information
+
+using phase2;
+using phase2.FileManager;
+using phase2.Processor;
+using phase2.Processor.QueryProcessor;
+
+internal class Program
+{
+    public static void Main(string[] args)
+    {
+        String input = Console.ReadLine();
+        EngineProcessor.SetInvertedIndexDocx();
+        var kds = SearchOperation.SearchText(input ,EngineProcessor.InvertedIndexDocx);
+        Console.WriteLine("sadsadas");
+    }
+}
