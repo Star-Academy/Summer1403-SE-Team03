@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using phase2.Models;
 
 namespace phase2.InvertedIndexManager;

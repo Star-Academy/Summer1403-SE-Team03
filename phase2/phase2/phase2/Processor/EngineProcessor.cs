@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using phase2.FileManager;
 using phase2.InvertedIndexManager;
 using phase2.Models;

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace phase2.Processor.QueryProcessor;
 
 public class SearchOperation
