@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Runtime.InteropServices.JavaScript;
-
 namespace phase2.Processor.QueryProcessor;
 
 public class SearchOperation

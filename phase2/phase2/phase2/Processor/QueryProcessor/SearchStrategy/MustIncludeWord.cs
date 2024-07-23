@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices.JavaScript;
-
 namespace phase2.Processor.QueryProcessor.SearchStrategy;
 
 public class MustIncludeWord
@@ -8,10 +6,12 @@ public class MustIncludeWord
     {
         List<string> result = new();
         for (var i = 0; i < wordsShouldBe.Count; i++)
+        {
             if (i == 0)
                 result = SearchOperation.SearchText(wordsShouldBe[i]);
             else
                 result = result.Intersect(SearchOperation.SearchText(wordsShouldBe[i])).ToList();
+        }
 
         return result;
     }

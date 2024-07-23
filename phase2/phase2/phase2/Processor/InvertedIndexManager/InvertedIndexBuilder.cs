@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using phase2.Models;
 
 namespace phase2.InvertedIndexManager;
@@ -16,14 +14,16 @@ public class InvertedIndexBuilder
             foreach (var elementWord in words)
                 if (!invertedData.ContainsKey(elementWord))
                 {
-                    List<String> values = new List<string>();
+                    List<string> values = new();
                     values.Add(element.FileName);
                     invertedData.Add(elementWord, values);
                 }
                 else
                 {
                     if (!invertedData[elementWord].Contains(element.FileName))
+                    {
                         invertedData[elementWord].Add(element.FileName);
+                    }
                 }
         }
 

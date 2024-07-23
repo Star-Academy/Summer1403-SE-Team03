@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices.JavaScript;
-
 namespace phase2.Processor.QueryProcessor.SearchStrategy;
 
 public class SearchStrategy
@@ -35,10 +33,10 @@ public class SearchStrategy
             switch (firstChar)
             {
                 case '+':
-                    atLeastOne.Add(element.Substring(0));
+                    atLeastOne.Add(element.Substring(1));
                     break;
                 case '-':
-                    wordsShouldNotBe.Add(element.Substring(0));
+                    wordsShouldNotBe.Add(element.Substring(1));
                     break;
                 default:
                     wordsShouldBe.Add(element);
@@ -50,7 +48,7 @@ public class SearchStrategy
     private IEnumerable<string> GetResult(List<string> atLeastOneResult, List<string> wordsShouldBeResult,
         List<string> wordsShouldNotBeResult)
     {
-        List<string> result = new();
+        List<string> result = new List<string>();
         if (atLeastOneResult.Count == 0)
         {
             result = wordsShouldBeResult;
@@ -62,9 +60,8 @@ public class SearchStrategy
         else
         {
             result = atLeastOneResult.Intersect(wordsShouldBeResult).ToList();
-            result = result.Except(wordsShouldNotBeResult).ToList();
         }
-
+        result = result.Except(wordsShouldNotBeResult).ToList();
         return result;
     }
 }
