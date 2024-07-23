@@ -2,7 +2,7 @@
 
 <root>
     <data name="databasePath">
-        <value>C:\Users\Mahdi\Desktop\code - star\Summer1403-SE-Team03\phase2\phase2\phase2\Asset\EnglishData</value>
+        <value>C:\Users\User\Desktop\2 mordad\Summer1403-SE-Team03\phase2\phase2\phase2\Asset\EnglishData</value>
     </data>
     <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root"
                 xmlns="">

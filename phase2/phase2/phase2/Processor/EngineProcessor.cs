@@ -9,12 +9,29 @@ namespace phase2.Processor;
 
 public class EngineProcessor
 {
-    public static Dictionary<string, List<string>> InvertedIndexDocx { get; set; }
 
-    public static void SetInvertedIndexDocx()
+    public  Dictionary<string, List<string>> InvertedIndexDictionary { get; set; }
+    private static EngineProcessor _engineProcessor;
+    
+    public EngineProcessor()
+    {
+        SetInvertedIndexDocx();
+    }
+    public static EngineProcessor Instance
+    {
+        get
+        {
+            if (_engineProcessor == null)
+            {
+                _engineProcessor = new EngineProcessor();
+            }
+            return _engineProcessor;
+        }
+    }
+
+    private void SetInvertedIndexDocx()
     {
         List<DataFile> data = FileProcessor.ProcessDocumentsForIndexing(FileReader.ReadFiles());
-        InvertedIndexDocx =InvertedIndexBuilder.BuildInvertedIndex(data);
-
+        InvertedIndexDictionary = InvertedIndexBuilder.BuildInvertedIndex(data);
     }
 }
