@@ -9,8 +9,7 @@ public class FileReader
 {
     public static List<DataFile> ReadFiles()
     {
-        var folderPath = ReadFolderPath();
-        return ReadFilesFromFolder(folderPath);
+        return ReadFilesFromFolder(ReadFolderPath());
     }
 
     private static string ReadFolderPath()
@@ -20,12 +19,10 @@ public class FileReader
 
     private static List<DataFile> ReadFilesFromFolder(string folderPath)
     {
-        List<DataFile> data = new List<DataFile>();
+        List<DataFile> data = new();
         var files = Directory.GetFiles(folderPath, "*");
         foreach (var file in files)
-        {
-            data.Add(new DataFile{FileName = Path.GetFileName(file) ,Data = File.ReadAllText(file)});
-        }
+            data.Add(new DataFile { FileName = Path.GetFileName(file), Data = File.ReadAllText(file) });
         return data;
     }
 }

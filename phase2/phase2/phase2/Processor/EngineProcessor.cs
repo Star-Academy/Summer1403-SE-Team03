@@ -12,6 +12,7 @@ public class EngineProcessor
         SetInvertedIndexDocx();
     }
 
+
     public Dictionary<string, List<string>> InvertedIndexDictionary { get; set; }
 
     public static EngineProcessor Instance
@@ -19,7 +20,7 @@ public class EngineProcessor
         get
         {
             if (_engineProcessor == null) _engineProcessor = new EngineProcessor();
-            
+
             return _engineProcessor;
         }
     }

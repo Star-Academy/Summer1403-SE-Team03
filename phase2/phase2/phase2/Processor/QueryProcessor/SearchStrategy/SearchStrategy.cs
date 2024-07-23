@@ -4,30 +4,34 @@ namespace phase2.Processor.QueryProcessor.SearchStrategy;
 
 public class SearchStrategy
 {
-    public List<String> ManageSearchStrategy(String inputSearch)
+    public IEnumerable<string> ManageSearchStrategy(string inputSearch)
     {
-        List<String> atLeastOne = new List<string>();
-        List<String> wordsShouldBe = new List<string>();
-        List<String> wordsShouldNotBe = new List<string>();
-        ManageInputSearchStrategy(SplitSearchInput(inputSearch), out atLeastOne, out wordsShouldBe , out wordsShouldNotBe);
-        List<String> atLeastOneResult = ContainOneOfWordSearch.GetFilesContainingAnyWord(atLeastOne);
-        List<String> wordsShouldBeResult = MustIncludeWord.GetDirectoriesContainingWords(wordsShouldBe);
-        List<String> wordsShouldNotBeResult = MustNotContainWord.GetFilesNotContainingAnyWord(wordsShouldNotBe);
+        List<string> atLeastOne = new();
+        List<string> wordsShouldBe = new();
+        List<string> wordsShouldNotBe = new();
+        ManageInputSearchStrategy(SplitSearchInput(inputSearch), out atLeastOne, out wordsShouldBe,
+            out wordsShouldNotBe);
+        List<string> atLeastOneResult = ContainOneOfWordSearch.GetFilesContainingAnyWord(atLeastOne);
+        List<string> wordsShouldBeResult = MustIncludeWord.GetDirectoriesContainingWords(wordsShouldBe);
+        List<string> wordsShouldNotBeResult = MustNotContainWord.GetFilesNotContainingAnyWord(wordsShouldNotBe);
         return GetResult(atLeastOneResult, wordsShouldBeResult, wordsShouldNotBeResult);
     }
-    private List<String> SplitSearchInput(String searchInput)
+
+    private List<string> SplitSearchInput(string searchInput)
     {
-        List<String> splitSearchInput = searchInput.ToUpper().Split(" ").ToList();
+        List<string> splitSearchInput = searchInput.ToUpper().Split(" ").ToList();
         return splitSearchInput;
     }
-    private void ManageInputSearchStrategy(List<String> splitInput , out List<String> atLeastOne , out List<String> wordsShouldBe , out List<String> wordsShouldNotBe )
+
+    private void ManageInputSearchStrategy(List<string> splitInput, out List<string> atLeastOne,
+        out List<string> wordsShouldBe, out List<string> wordsShouldNotBe)
     {
         atLeastOne = new List<string>();
         wordsShouldBe = new List<string>();
         wordsShouldNotBe = new List<string>();
-        foreach (String element in splitInput)
+        foreach (var element in splitInput)
         {
-            char firstChar = element.ElementAt(0);
+            var firstChar = element.ElementAt(0);
             switch (firstChar)
             {
                 case '+':
@@ -42,9 +46,11 @@ public class SearchStrategy
             }
         }
     }
-    private List<String> GetResult(List<String> atLeastOneResult, List<String> wordsShouldBeResult , List<String> wordsShouldNotBeResult )
+
+    private IEnumerable<string> GetResult(List<string> atLeastOneResult, List<string> wordsShouldBeResult,
+        List<string> wordsShouldNotBeResult)
     {
-        List<String> result = new List<String>();
+        List<string> result = new();
         if (atLeastOneResult.Count == 0)
         {
             result = wordsShouldBeResult;
@@ -58,8 +64,7 @@ public class SearchStrategy
             result = atLeastOneResult.Intersect(wordsShouldBeResult).ToList();
             result = result.Except(wordsShouldNotBeResult).ToList();
         }
-        return result;
 
+        return result;
     }
-    
 }

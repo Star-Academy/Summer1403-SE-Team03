@@ -8,12 +8,7 @@ public class SearchOperation
     public static List<string> SearchText(string input)
     {
         if (EngineProcessor.Instance.InvertedIndexDictionary.TryGetValue(input, out List<string> documents))
-        {
             return documents;
-        }
-        else
-        {
-            return new List<string>();
-        }
+        return new List<string>();
     }
 }

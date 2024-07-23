@@ -2,16 +2,13 @@ namespace phase2.Processor.QueryProcessor.SearchStrategy;
 
 public class ContainOneOfWordSearch
 {
-    public static List<String> GetFilesContainingAnyWord(List<String> atLeastOne)
+    public static List<string> GetFilesContainingAnyWord(List<string> atLeastOne)
     {
-        HashSet<String> result = new HashSet<string>();
+        HashSet<string> result = new();
         foreach (var element in atLeastOne)
         {
-            List<string> tmp = SearchOperation.SearchText(element);
-            foreach (var element2 in tmp)
-            {
-                result.Add(element2);
-            }
+            List<string> searchResult = SearchOperation.SearchText(element);
+            foreach (var doc in searchResult) result.Add(doc);
         }
 
         return result.ToList();

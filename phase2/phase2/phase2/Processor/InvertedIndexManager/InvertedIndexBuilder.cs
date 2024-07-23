@@ -16,7 +16,7 @@ public class InvertedIndexBuilder
             foreach (var elementWord in words)
                 if (!invertedData.ContainsKey(elementWord))
                 {
-                    var values = new List<string>();
+                    List<String> values = new List<string>();
                     values.Add(element.FileName);
                     invertedData.Add(elementWord, values);
                 }

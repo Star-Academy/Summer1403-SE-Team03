@@ -7,6 +7,6 @@ public sealed class FileProcessor
 {
     public static List<DataFile> ProcessDocumentsForIndexing(List<DataFile> docx)
     {
-        return UpperCase.MakeUppercase(docx).RemovePunctuation().RemoveExtraSpace();
+        return UpperCaseMaker.MakeUpperCase(docx).RemovePunctuation().RemoveExtraSpace();
     }
 }
