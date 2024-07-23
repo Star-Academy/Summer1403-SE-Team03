@@ -24,7 +24,7 @@ public class FileReader
         var files = Directory.GetFiles(folderPath, "*");
         foreach (var file in files)
         {
-            data.Add(new DataFile(Path.GetFileName(file) ,File.ReadAllText(file)));
+            data.Add(new DataFile{FileName = Path.GetFileName(file) ,Data = File.ReadAllText(file)});
         }
         return data;
     }

@@ -60,7 +60,7 @@ namespace phase2 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\User\Desktop\2 mordad\Summer1403-SE-Team03\phase2\phase2\phase2\Asset\EnglishData.
+        ///   Looks up a localized string similar to Asset/EnglishData.
         /// </summary>
         internal static string databasePath {
             get {

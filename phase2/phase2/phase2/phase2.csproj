@@ -13,6 +13,16 @@
             <LastGenOutput>Resources.Designer.cs</LastGenOutput>
         </EmbeddedResource>
     </ItemGroup>
+    <ItemGroup>
+        <ContentWithTargetPath Include="Asset\EnglishData\**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>%(RecursiveDir)\Asset\EnglishData\%(Filename)%(Extension)</TargetPath>
+        </ContentWithTargetPath>
+        <ContentWithTargetPath Include="Program.cs">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <TargetPath>\Program.cs</TargetPath>
+        </ContentWithTargetPath>
+    </ItemGroup>
 
     <ItemGroup>
         <Compile Update="Resources.Designer.cs">
