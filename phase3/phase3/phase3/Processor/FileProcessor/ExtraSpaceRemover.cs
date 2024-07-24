@@ -3,9 +3,9 @@ using phase3.Models;
 
 namespace phase3.Processor;
 
-public static class ExtraSpaceRemover
+public class ExtraSpaceRemover : ITextOperation
 {
-    public static List<DataFile> RemoveExtraSpace(this List<DataFile> docx)
+    public List<DataFile> Execute (List<DataFile> docx)
     {
         const string pattern = @"\s+";
         var result = docx.Select(element => new DataFile

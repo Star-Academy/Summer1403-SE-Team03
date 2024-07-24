@@ -24,7 +24,7 @@ public class EngineProcessor
 
     private void SetInvertedIndexDocx()
     {
-        var data = FileProcessor.ProcessDocumentsForIndexing(FileReader.ReadFiles());
+        var data = FileProcessor.ProcessDocumentsForIndexing(FileReader.Instance.ReadFiles());
         InvertedIndexDictionary = InvertedIndexBuilder.BuildInvertedIndex(data);
     }
 }
