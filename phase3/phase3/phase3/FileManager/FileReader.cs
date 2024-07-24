@@ -4,17 +4,27 @@ namespace phase3.FileManager;
 
 public class FileReader
 {
-    public static List<DataFile> ReadFiles()
+
+    private static readonly FileReader _fileReader = new FileReader();
+
+    public static FileReader Instance
+    {
+        get
+        {
+            return _fileReader;
+        }
+    }
+    public List<DataFile> ReadFiles()
     {
         return ReadFilesFromFolder(ReadFolderPath());
     }
 
-    private static string ReadFolderPath()
+    private string ReadFolderPath()
     {
         return Resources.databasePath;
     }
 
-    private static List<DataFile> ReadFilesFromFolder(string folderPath)
+    private List<DataFile> ReadFilesFromFolder(string folderPath)
     {
         List<DataFile> data = new();
         var files = Directory.GetFiles(folderPath, "*");
