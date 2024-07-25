@@ -2,15 +2,12 @@ namespace phase3.Processor.QueryProcessor.SearchStrategy;
 
 public class ContainOneOfWordSearch : ISearchStrategy
 {
-    public List<string> Execute (List<string> atLeastOne)
+    public List<string> ProcessOnWords(List<string> atLeastOne)
     {
-        HashSet<string> result = new();
-        foreach (var element in atLeastOne)
-        {
-            List<string> searchResult = SearchOperation.SearchText(element);
-            foreach (var doc in searchResult) result.Add(doc);
-        }
-
-        return result.ToList();
+        var finalResult = atLeastOne
+            .SelectMany(word => SearchOperation.SearchText(word))
+            .ToHashSet()
+            .ToList();
+        return finalResult.ToList();
     }
 }

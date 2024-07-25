@@ -5,8 +5,8 @@ namespace phase3.Processor;
 
 public class EngineProcessor
 {
-    private static readonly EngineProcessor _engineProcessor = new EngineProcessor();
-    
+    private static readonly EngineProcessor _engineProcessor = new();
+
     public Dictionary<string, List<string>> InvertedIndexDictionary { get; set; }
 
     private EngineProcessor()
@@ -14,13 +14,7 @@ public class EngineProcessor
         SetInvertedIndexDocx();
     }
 
-    public static EngineProcessor Instance
-    {
-        get
-        {
-            return _engineProcessor;
-        }
-    }
+    public static EngineProcessor Instance => _engineProcessor;
 
     private void SetInvertedIndexDocx()
     {

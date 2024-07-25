@@ -1,5 +1,4 @@
-﻿
-using phase3.Processor.QueryProcessor.SearchStrategy;
+﻿using phase3.Processor.QueryProcessor.SearchStrategy;
 
 internal class Program
 {

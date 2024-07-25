@@ -4,16 +4,10 @@ namespace phase3.FileManager;
 
 public class FileReader
 {
+    private static readonly FileReader _fileReader = new();
 
-    private static readonly FileReader _fileReader = new FileReader();
+    public static FileReader Instance => _fileReader;
 
-    public static FileReader Instance
-    {
-        get
-        {
-            return _fileReader;
-        }
-    }
     public List<DataFile> ReadFiles()
     {
         return ReadFilesFromFolder(ReadFolderPath());

@@ -11,10 +11,7 @@ public sealed class FileProcessor
         var operations = new List<ITextOperation>
             { new ExtraSpaceRemover(), new PunctuationRemover(), new UpperCaseMaker() };
         List<DataFile> result = docx;
-        foreach (ITextOperation operation in operations)
-        {
-            result = operation.Execute(result);
-        }
+        foreach (var operation in operations) result = operation.Execute(result);
 
         return result;
     }
