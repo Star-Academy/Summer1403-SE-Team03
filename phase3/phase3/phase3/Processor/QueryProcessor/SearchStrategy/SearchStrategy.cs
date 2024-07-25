@@ -9,9 +9,9 @@ public class SearchStrategy
         List<string> wordsShouldNotBe = new();
         ManageInputSearchStrategy(SplitSearchInput(inputSearch), out atLeastOne, out wordsShouldBe,
             out wordsShouldNotBe);
-        List<string> atLeastOneResult = ContainOneOfWordSearch.GetFilesContainingAnyWord(atLeastOne);
-        List<string> wordsShouldBeResult = MustIncludeWord.GetDirectoriesContainingWords(wordsShouldBe);
-        List<string> wordsShouldNotBeResult = MustNotContainWord.GetFilesNotContainingAnyWord(wordsShouldNotBe);
+        List<string> atLeastOneResult = new ContainOneOfWordSearch().Execute(atLeastOne);;
+        List<string> wordsShouldBeResult = new MustIncludeWord().Execute(wordsShouldBe);
+        List<string> wordsShouldNotBeResult = new MustNotContainWord().Execute(wordsShouldNotBe);
         return GetResult(atLeastOneResult, wordsShouldBeResult, wordsShouldNotBeResult);
     }
 

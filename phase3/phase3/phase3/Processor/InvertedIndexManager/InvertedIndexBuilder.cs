@@ -18,12 +18,9 @@ public class InvertedIndexBuilder
                     values.Add(element.FileName);
                     invertedData.Add(elementWord, values);
                 }
-                else
+                else if(!invertedData[elementWord].Contains(element.FileName))
                 {
-                    if (!invertedData[elementWord].Contains(element.FileName))
-                    {
-                        invertedData[elementWord].Add(element.FileName);
-                    }
+                    invertedData[elementWord].Add(element.FileName);
                 }
         }
 
