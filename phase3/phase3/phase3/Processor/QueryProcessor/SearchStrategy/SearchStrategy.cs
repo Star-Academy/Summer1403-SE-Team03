@@ -1,67 +1,47 @@
+
 namespace phase3.Processor.QueryProcessor.SearchStrategy;
 
 public class SearchStrategy
 {
+    private readonly Dictionary<string, ISearchStrategy> _strategies;
+    private readonly ISearchStrategy _containOneOfWordSearch;
+    private readonly ISearchStrategy _mustIncludeWord;
+    private readonly ISearchStrategy _mustNotContainWord;
+    private readonly SearchQueryParser _searchQueryParser;
+    private readonly SearchResultsFilter _searchResultsFilter;
+    
+    public SearchStrategy(ISearchStrategy containOneOfWordSearch , ISearchStrategy mustIncludeWord , ISearchStrategy  mustNotContainWord
+        ,SearchQueryParser searchQueryParser , SearchResultsFilter searchResultsFilter)
+    {
+        _strategies = new Dictionary<string, ISearchStrategy>
+        {
+            { "atLeastOne", new ContainOneOfWordSearch() },
+            { "wordsShouldBe", new MustIncludeWord() },
+            { "wordsShouldNotBe", new MustNotContainWord() }
+        };
+        _containOneOfWordSearch = containOneOfWordSearch;
+        _mustIncludeWord = mustIncludeWord;
+        _mustNotContainWord = mustNotContainWord;
+        _searchQueryParser = searchQueryParser;
+        _searchResultsFilter = searchResultsFilter;
+    }
+
     public IEnumerable<string> ManageSearchStrategy(string inputSearch)
     {
         List<string> atLeastOne = new();
         List<string> wordsShouldBe = new();
         List<string> wordsShouldNotBe = new();
-        ManageInputSearchStrategy(SplitSearchInput(inputSearch), out atLeastOne, out wordsShouldBe,
+        var upperInputSearch = inputSearch.ToUpper();
+        _searchQueryParser.ManageInputSearchStrategy(SplitSearchInput(upperInputSearch), out atLeastOne, out wordsShouldBe,
             out wordsShouldNotBe);
-        List<string> atLeastOneResult = new ContainOneOfWordSearch().Execute(atLeastOne);;
-        List<string> wordsShouldBeResult = new MustIncludeWord().Execute(wordsShouldBe);
-        List<string> wordsShouldNotBeResult = new MustNotContainWord().Execute(wordsShouldNotBe);
-        return GetResult(atLeastOneResult, wordsShouldBeResult, wordsShouldNotBeResult);
+        var atLeastOneResult = _strategies["atLeastOne"].ProcessOnWords(atLeastOne);
+        var wordsShouldBeResult = _strategies["wordsShouldBe"].ProcessOnWords(wordsShouldBe);
+        var wordsShouldNotBeResult = _strategies["wordsShouldNotBe"].ProcessOnWords(wordsShouldNotBe);
+        return _searchResultsFilter.GetResult(atLeastOneResult, wordsShouldBeResult, wordsShouldNotBeResult);
     }
-
     private List<string> SplitSearchInput(string searchInput)
     {
-        List<string> splitSearchInput = searchInput.ToUpper().Split(" ").ToList();
+        var splitSearchInput = searchInput.Split(" ").ToList();
         return splitSearchInput;
-    }
-
-    private void ManageInputSearchStrategy(List<string> splitInput, out List<string> atLeastOne,
-        out List<string> wordsShouldBe, out List<string> wordsShouldNotBe)
-    {
-        atLeastOne = new List<string>();
-        wordsShouldBe = new List<string>();
-        wordsShouldNotBe = new List<string>();
-        foreach (var element in splitInput)
-        {
-            var firstChar = element.ElementAt(0);
-            switch (firstChar)
-            {
-                case '+':
-                    atLeastOne.Add(element.Substring(1));
-                    break;
-                case '-':
-                    wordsShouldNotBe.Add(element.Substring(1));
-                    break;
-                default:
-                    wordsShouldBe.Add(element);
-                    break;
-            }
-        }
-    }
-
-    private IEnumerable<string> GetResult(List<string> atLeastOneResult, List<string> wordsShouldBeResult,
-        List<string> wordsShouldNotBeResult)
-    {
-        List<string> result = new List<string>();
-        if (atLeastOneResult.Count == 0)
-        {
-            result = wordsShouldBeResult;
-        }
-        else if (wordsShouldBeResult.Count == 0)
-        {
-            result = atLeastOneResult;
-        }
-        else
-        {
-            result = atLeastOneResult.Intersect(wordsShouldBeResult).ToList();
-        }
-        result = result.Except(wordsShouldNotBeResult).ToList();
-        return result;
     }
 }

@@ -1,18 +1,12 @@
 namespace phase3.Processor.QueryProcessor.SearchStrategy;
 
-public class MustIncludeWord
+public class MustIncludeWord : ISearchStrategy
 {
-    public List<string> Execute (List<string> wordsShouldBe)
+    public List<string> ProcessOnWords(List<string> wordsShouldBe)
     {
-        List<string> result = new();
-        for (var i = 0; i < wordsShouldBe.Count; i++)
-        {
-            if (i == 0)
-                result = SearchOperation.SearchText(wordsShouldBe[i]);
-            else
-                result = result.Intersect(SearchOperation.SearchText(wordsShouldBe[i])).ToList();
-        }
-
-        return result;
+        var finalResult = wordsShouldBe
+            .Select(word => SearchOperation.SearchText(word))
+            .Aggregate((result, next) => result.Intersect(next).ToList());
+        return finalResult;
     }
 }

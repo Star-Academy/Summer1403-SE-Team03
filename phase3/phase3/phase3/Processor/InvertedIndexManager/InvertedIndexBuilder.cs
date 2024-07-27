@@ -14,11 +14,10 @@ public class InvertedIndexBuilder
             foreach (var elementWord in words)
                 if (!invertedData.ContainsKey(elementWord))
                 {
-                    List<string> values = new();
-                    values.Add(element.FileName);
+                    List<string> values = new() { element.FileName };
                     invertedData.Add(elementWord, values);
                 }
-                else if(!invertedData[elementWord].Contains(element.FileName))
+                else if (!invertedData[elementWord].Contains(element.FileName))
                 {
                     invertedData[elementWord].Add(element.FileName);
                 }

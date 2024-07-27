@@ -2,29 +2,14 @@ using phase3.Models;
 
 namespace phase3.FileManager;
 
-public class FileReader
+public class FileReader : IFileReader
 {
-
-    private static readonly FileReader _fileReader = new FileReader();
-
-    public static FileReader Instance
+    public List<DataFile> ReadFile(String dataPath)
     {
-        get
-        {
-            return _fileReader;
-        }
+        return ReadFilesFromFolder(dataPath);
     }
-    public List<DataFile> ReadFiles()
-    {
-        return ReadFilesFromFolder(ReadFolderPath());
-    }
-
-    private string ReadFolderPath()
-    {
-        return Resources.databasePath;
-    }
-
-    private List<DataFile> ReadFilesFromFolder(string folderPath)
+    
+    private List<DataFile> ReadFilesFromFolder(string folderPath) 
     {
         List<DataFile> data = new();
         var files = Directory.GetFiles(folderPath, "*");
