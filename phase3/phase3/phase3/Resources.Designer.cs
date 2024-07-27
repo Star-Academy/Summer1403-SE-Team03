@@ -62,9 +62,9 @@ namespace phase3 {
         /// <summary>
         ///   Looks up a localized string similar to Asset/EnglishData.
         /// </summary>
-        internal static string databasePath {
+        internal static string dataPath {
             get {
-                return ResourceManager.GetString("databasePath", resourceCulture);
+                return ResourceManager.GetString("dataPath", resourceCulture);
             }
         }
     }
