@@ -1,43 +1,18 @@
 using phase3.FileManager;
 using phase3.InvertedIndexManager;
+using phase3.Models;
 
 namespace phase3.Processor.QueryProcessor.SearchStrategy;
 
 public class SearchStrategy
 {
-    private readonly IReadOnlyDictionary<string, ISearchStrategy> _strategies;
-    private readonly ISearchStrategy _containOneOfWordSearch;
-    private readonly ISearchStrategy _mustIncludeWord;
-    private readonly ISearchStrategy _mustNotContainWord;
+    private readonly ISearchStrategyFactory _searchStrategyFactory;
     private readonly SearchQueryParser _searchQueryParser;
     private readonly SearchResultsFilter _searchResultsFilter;
 
-    public SearchStrategy(ISearchStrategy containOneOfWordSearch, ISearchStrategy mustIncludeWord,
-        ISearchStrategy mustNotContainWord
-        , SearchQueryParser searchQueryParser, SearchResultsFilter searchResultsFilter)
+    public SearchStrategy(ISearchStrategyFactory searchStrategyFactory , SearchQueryParser searchQueryParser , SearchResultsFilter searchResultsFilter )
     {
-        _strategies = new Dictionary<string, ISearchStrategy>
-        {
-            {
-                "+", new ContainOneOfWordSearch(
-                    new SearchOperation(
-                        new TextFileReader(),
-                        new EngineProcessor(new FileProcessor(), new InvertedIndexBuilder())))
-            },
-            {
-                "",
-                new MustIncludeWord(new SearchOperation(new TextFileReader(),
-                    new EngineProcessor(new FileProcessor(), new InvertedIndexBuilder())))
-            },
-            {
-                "-",
-                new MustNotContainWord(new SearchOperation(new TextFileReader(),
-                    new EngineProcessor(new FileProcessor(), new InvertedIndexBuilder())))
-            }
-        };
-        _containOneOfWordSearch = containOneOfWordSearch;
-        _mustIncludeWord = mustIncludeWord;
-        _mustNotContainWord = mustNotContainWord;
+        _searchStrategyFactory = searchStrategyFactory;
         _searchQueryParser = searchQueryParser;
         _searchResultsFilter = searchResultsFilter;
     }
@@ -51,9 +26,9 @@ public class SearchStrategy
         _searchQueryParser.ManageInputSearchStrategy(SplitSearchInput(upperInputSearch), out atLeastOne,
             out wordsShouldBe,
             out wordsShouldNotBe);
-        var atLeastOneResult = _strategies[_containOneOfWordSearch.sign].ProcessOnWords(atLeastOne);
-        var wordsShouldBeResult = _strategies[_mustIncludeWord.sign].ProcessOnWords(wordsShouldBe);
-        var wordsShouldNotBeResult = _strategies[_mustNotContainWord.sign].ProcessOnWords(wordsShouldNotBe);
+        var atLeastOneResult = _searchStrategyFactory.GetValueOfKey(QueryConstants.atLeastOneSign).ProcessOnWords(atLeastOne);
+        var wordsShouldBeResult =_searchStrategyFactory.GetValueOfKey(QueryConstants.mustContainSign).ProcessOnWords(wordsShouldBe);
+        var wordsShouldNotBeResult = _searchStrategyFactory.GetValueOfKey(QueryConstants.mustNotContainSign).ProcessOnWords(wordsShouldNotBe);
 
         return _searchResultsFilter.GetResult(atLeastOneResult, wordsShouldBeResult, wordsShouldNotBeResult);
     }
