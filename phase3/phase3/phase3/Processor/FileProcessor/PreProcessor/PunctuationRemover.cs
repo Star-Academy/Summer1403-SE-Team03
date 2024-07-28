@@ -7,7 +7,7 @@ public class PunctuationRemover : ITextOperation
 {
     public List<DataFile> Execute(List<DataFile> docx)
     {
-        const string pattern = @"[^A-Za-z0-9]";
+        const string pattern = @"\W";
         var regex = new Regex(pattern);
         var result = docx.Select(element => new DataFile
         {
