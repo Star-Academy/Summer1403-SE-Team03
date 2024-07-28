@@ -2,7 +2,7 @@ namespace phase3.Processor.QueryProcessor.SearchStrategy;
 
 public class ContainOneOfWordSearch : ISearchStrategy
 {
-    public List<string> ProcessOnWords(List<string> atLeastOne)
+    public List<string> ProcessOnWords(IReadOnlyList<string> atLeastOne)
     {
         var finalResult = atLeastOne
             .SelectMany(word => SearchOperation.SearchText(word))

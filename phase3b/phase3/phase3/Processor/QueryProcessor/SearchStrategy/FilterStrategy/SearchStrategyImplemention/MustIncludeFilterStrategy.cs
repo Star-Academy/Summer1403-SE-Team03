@@ -4,8 +4,15 @@ namespace phase3.Processor.QueryProcessor.SearchStrategy.SearchStrategyImplement
 
 public class MustIncludeFilterStrategy : IFilterSearchStrategy
 {
-    public void Apply(string element, List<string> atLeastOne, List<string> wordsShouldBe, List<string> wordsShouldNotBe)
+    public List<string> Apply(IReadOnlyList<string> inputWords)
     {
-        wordsShouldBe.Add(element);
+        List<string> wordSouldBe = new List<string>();
+        foreach (string word in inputWords)
+        {
+            if (!word.StartsWith('+') || !word.StartsWith('-'))
+            wordSouldBe.Add(word);
+        }
+
+        return wordSouldBe;
     }
 }

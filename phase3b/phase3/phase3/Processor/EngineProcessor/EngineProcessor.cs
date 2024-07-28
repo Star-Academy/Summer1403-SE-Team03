@@ -8,6 +8,7 @@ namespace phase3.Processor;
 public class EngineProcessor : IEngineProcessor
 {
     public Dictionary<string, List<string>> InvertedIndexDictionary { get; set; }
+
     public void SetInvertedIndexDocx(List<DataFile> dataFiles)
     {
         var data = FileProcessor.ProcessDocumentsForIndexing(dataFiles);

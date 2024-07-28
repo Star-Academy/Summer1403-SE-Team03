@@ -4,8 +4,17 @@ namespace phase3.Processor.QueryProcessor.SearchStrategy.SearchStrategyImplement
 
 public class MustNotContainFilterStrategy : IFilterSearchStrategy
 {
-    public void Apply(string element, List<string> atLeastOne, List<string> wordsShouldBe, List<string> wordsShouldNotBe)
+    public List<string> Apply(IReadOnlyList<string> inputWords)
     {
-        wordsShouldNotBe.Add(element.Substring(1));
+        List<string> wordShouldNotBe = new List<string>();
+        foreach (string word in inputWords)
+        {
+            if (word.StartsWith('-'))
+            {
+                wordShouldNotBe.Add(word.TrimStart('-'));
+            }
+        }
+
+        return wordShouldNotBe;
     }
 }

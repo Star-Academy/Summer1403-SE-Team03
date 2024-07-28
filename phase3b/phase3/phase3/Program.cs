@@ -1,4 +1,4 @@
-﻿
+﻿using phase3.IO.OutPutManager;
 using phase3.Processor.QueryProcessor.SearchStrategy;
 
 
@@ -13,9 +13,8 @@ internal class Program
             new MustNotContainWord(),
             new SearchQueryParser(),
             new SearchResultsFilter());
-        var result = searchStrategy.ManageSearchStrategy(input);
-        foreach (var element in result) Console.WriteLine(element);
-        
+        ConsoleOutput consoleOutput = new ConsoleOutput(searchStrategy);
+        var results = consoleOutput.OutputProcess(input);
+        results.ToList().ForEach(result => Console.WriteLine(result));
     }
-    //testing merge
 }

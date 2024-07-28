@@ -2,7 +2,7 @@ namespace phase3.Processor.QueryProcessor.SearchStrategy;
 
 public class MustIncludeWord : ISearchStrategy
 {
-    public List<string> ProcessOnWords(List<string> wordsShouldBe)
+    public List<string> ProcessOnWords(IReadOnlyList<string> wordsShouldBe)
     {
         var finalResult = wordsShouldBe
             .Select(word => SearchOperation.SearchText(word))

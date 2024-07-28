@@ -4,8 +4,17 @@ namespace phase3.Processor.QueryProcessor.SearchStrategy.SearchStrategyImplement
 
 public class AtLeastOneFilterStrategy : IFilterSearchStrategy
 {
-    public void Apply(string element, List<string> atLeastOne, List<string> wordsShouldBe, List<string> wordsShouldNotBe)
+    public List<string> Apply(IReadOnlyList<string> inputWords)
     {
-        atLeastOne.Add(element.Substring(1));
+        List<string> atLeastOne = new List<string>();
+        foreach (string word in inputWords)
+        {
+            if (word.StartsWith('+'))
+            {
+                atLeastOne.Add(word.TrimStart('+'));
+            }
+        }
+
+        return atLeastOne;
     }
 }

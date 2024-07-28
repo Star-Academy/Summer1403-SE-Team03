@@ -6,11 +6,9 @@ public class SearchOperation
 {
     public static List<string> SearchText(string input)
     {
-        FileReader fileReader = new FileReader();
-        EngineProcessor engineProcessor = new EngineProcessor();
+        var fileReader = new FileReader();
+        var engineProcessor = new EngineProcessor();
         engineProcessor.SetInvertedIndexDocx(fileReader.ReadFile(Resources.dataPath));
-        if (engineProcessor.InvertedIndexDictionary.TryGetValue(input, out List<string> documents))
-            return documents;
-        return new List<string>();
+        return engineProcessor.InvertedIndexDictionary.TryGetValue(input, out List<string> documents) ? documents : new List<string>();
     }
 }
