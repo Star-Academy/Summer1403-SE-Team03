@@ -32,8 +32,4 @@
         </Compile>
     </ItemGroup>
 
-    <ItemGroup>
-        <Folder Include="Processor\QueryProcessor\SearchStrategy\FilterStrategy\"/>
-    </ItemGroup>
-
 </Project>

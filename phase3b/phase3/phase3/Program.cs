@@ -1,4 +1,8 @@
-﻿using phase3.IO.OutPutManager;
+﻿using phase3.FileManager;
+using phase3.InvertedIndexManager;
+using phase3.IO.OutPutManager;
+using phase3.Processor;
+using phase3.Processor.QueryProcessor;
 using phase3.Processor.QueryProcessor.SearchStrategy;
 
 
@@ -8,9 +12,12 @@ internal class Program
     {
         var input = Console.ReadLine();
         var searchStrategy = new SearchStrategy(
-            new ContainOneOfWordSearch(),
-            new MustIncludeWord(),
-            new MustNotContainWord(),
+            new ContainOneOfWordSearch(new SearchOperation(new TextFileReader(),
+                new EngineProcessor(new FileProcessor(), new InvertedIndexBuilder()))),
+            new MustIncludeWord(new SearchOperation(new TextFileReader(),
+                new EngineProcessor(new FileProcessor(), new InvertedIndexBuilder()))),
+            new MustNotContainWord(new SearchOperation(new TextFileReader(),
+                new EngineProcessor(new FileProcessor(), new InvertedIndexBuilder()))),
             new SearchQueryParser(),
             new SearchResultsFilter());
         ConsoleOutput consoleOutput = new ConsoleOutput(searchStrategy);

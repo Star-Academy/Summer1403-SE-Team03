@@ -4,6 +4,5 @@ namespace phase3.IO.OutPutManager;
 
 public interface IOutput<T>
 {
-    
     T OutputProcess(string input);
 }

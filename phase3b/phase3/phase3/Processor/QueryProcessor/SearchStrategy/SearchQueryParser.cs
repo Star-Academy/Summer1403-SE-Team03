@@ -11,9 +11,9 @@ public class SearchQueryParser
     {
         try
         {
-            atLeastOne = new List<string>(new AtLeastOneFilterStrategy().Apply(splitInput));
-            wordsShouldBe = new List<string>(new MustIncludeFilterStrategy().Apply(splitInput));
-            wordsShouldNotBe = new List<string>(new MustNotContainFilterStrategy().Apply(splitInput));
+            atLeastOne = new List<string>(new AtLeastOneInputStrategy().Apply(splitInput));
+            wordsShouldBe = new List<string>(new MustIncludeInputStrategy().Apply(splitInput));
+            wordsShouldNotBe = new List<string>(new MustNotContainInputStrategy().Apply(splitInput));
         }
         catch (InvalidInputException e)
         {

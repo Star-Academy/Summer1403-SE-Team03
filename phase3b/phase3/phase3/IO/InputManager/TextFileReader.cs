@@ -14,7 +14,7 @@ public class TextFileReader : IFileReader
         var files = Directory.GetFiles(folderPath, "*");
         var data = files.Select(file => new DataFile
         {
-            FileName = Path.GetFileName(file), 
+            FileName = Path.GetFileName(file),
             Data = File.ReadAllText(file)
         }).ToList();
         return data;

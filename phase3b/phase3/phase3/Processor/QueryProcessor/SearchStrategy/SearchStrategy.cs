@@ -1,3 +1,6 @@
+using phase3.FileManager;
+using phase3.InvertedIndexManager;
+
 namespace phase3.Processor.QueryProcessor.SearchStrategy;
 
 public class SearchStrategy
@@ -15,9 +18,22 @@ public class SearchStrategy
     {
         _strategies = new Dictionary<string, ISearchStrategy>
         {
-            { "atLeastOne", new ContainOneOfWordSearch() },
-            { "wordsShouldBe", new MustIncludeWord() },
-            { "wordsShouldNotBe", new MustNotContainWord() }
+            {
+                "+", new ContainOneOfWordSearch(
+                    new SearchOperation(
+                        new TextFileReader(),
+                        new EngineProcessor(new FileProcessor(), new InvertedIndexBuilder())))
+            },
+            {
+                "",
+                new MustIncludeWord(new SearchOperation(new TextFileReader(),
+                    new EngineProcessor(new FileProcessor(), new InvertedIndexBuilder())))
+            },
+            {
+                "-",
+                new MustNotContainWord(new SearchOperation(new TextFileReader(),
+                    new EngineProcessor(new FileProcessor(), new InvertedIndexBuilder())))
+            }
         };
         _containOneOfWordSearch = containOneOfWordSearch;
         _mustIncludeWord = mustIncludeWord;
@@ -35,10 +51,10 @@ public class SearchStrategy
         _searchQueryParser.ManageInputSearchStrategy(SplitSearchInput(upperInputSearch), out atLeastOne,
             out wordsShouldBe,
             out wordsShouldNotBe);
-        var atLeastOneResult = _strategies["atLeastOne"].ProcessOnWords(atLeastOne);
-        var wordsShouldBeResult = _strategies["wordsShouldBe"].ProcessOnWords(wordsShouldBe);
-        var wordsShouldNotBeResult = _strategies["wordsShouldNotBe"].ProcessOnWords(wordsShouldNotBe);
-        
+        var atLeastOneResult = _strategies[_containOneOfWordSearch.sign].ProcessOnWords(atLeastOne);
+        var wordsShouldBeResult = _strategies[_mustIncludeWord.sign].ProcessOnWords(wordsShouldBe);
+        var wordsShouldNotBeResult = _strategies[_mustNotContainWord.sign].ProcessOnWords(wordsShouldNotBe);
+
         return _searchResultsFilter.GetResult(atLeastOneResult, wordsShouldBeResult, wordsShouldNotBeResult);
     }
 
