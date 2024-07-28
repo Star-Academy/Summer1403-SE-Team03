@@ -7,8 +7,7 @@ public class PunctuationRemover : ITextOperation
 {
     public List<DataFile> Execute(List<DataFile> docx)
     {
-        const string pattern = @"\W";
-        var regex = new Regex(pattern);
+        var regex = new Regex(ConstProperties._patternPunctuation);
         var result = docx.Select(element => new DataFile
         {
             FileName = element.FileName,

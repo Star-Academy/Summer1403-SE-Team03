@@ -9,19 +9,24 @@ public class EngineProcessor : IEngineProcessor
 {
     private readonly IFileProcessor _fileProcessor;
     private readonly InvertedIndexBuilder _invertedIndexBuilder ;
-
-
+    public Dictionary<string, List<string>> InvertedIndexDictionary { get;private set; }
+    
     public EngineProcessor(IFileProcessor fileProcessor , InvertedIndexBuilder invertedIndexBuilder)
     {
         _fileProcessor = fileProcessor;
         _invertedIndexBuilder = invertedIndexBuilder;
     }
-
-    public Dictionary<string, List<string>> InvertedIndexDictionary { get; set; }
     
-    public void SetInvertedIndexDocx(List<DataFile> dataFiles)
+    public void SetInvertedIndexDocx(List<DataFile> dataFiles) 
     {
         var data = _fileProcessor.ProcessDocumentsForIndexing(dataFiles);
         InvertedIndexDictionary = _invertedIndexBuilder.BuildInvertedIndex(data);
     }
+
+    public Dictionary<String, List<String>> GetInvertedIndex()
+    {
+        return InvertedIndexDictionary;
+    }
+    
+    
 }
