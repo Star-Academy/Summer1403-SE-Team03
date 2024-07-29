@@ -7,7 +7,7 @@ public class PunctuationRemover : ITextOperation
 {
     public List<DataFile> Execute(List<DataFile> docx)
     {
-        var regex = new Regex(ConstProperties._patternPunctuation);
+        var regex = new Regex(RegexPatternConst._patternPunctuation);
         var result = docx.Select(element => new DataFile
         {
             FileName = element.FileName,

@@ -21,14 +21,19 @@ public class InvertedIndexBuilder : IInvertedIndexBuilder
     {
         foreach (string elementWord in words)
         {
-            if (!invertedData.ContainsKey(elementWord))
-            {
-                invertedData.Add(elementWord, new List<string>() { element.FileName });
-            }
-            else if (!invertedData[elementWord].Contains(element.FileName))
-            {
-                invertedData[elementWord].Add(element.FileName);
-            }
+            InvertedHandler(invertedData, element, elementWord);
+        }
+    }
+
+    private static void InvertedHandler(Dictionary<string, List<string>> invertedData, DataFile element, string elementWord)
+    {
+        if (!invertedData.ContainsKey(elementWord))
+        {
+            invertedData.Add(elementWord, new List<string>() { element.FileName });
+        }
+        else if (!invertedData[elementWord].Contains(element.FileName))
+        {
+            invertedData[elementWord].Add(element.FileName);
         }
     }
 

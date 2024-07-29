@@ -3,11 +3,9 @@ namespace phase3.Processor.QueryProcessor.SearchStrategy;
 public class MustIncludeWord : ISearchStrategy
 {
     private readonly ISearchOperation _searchOperation;
-    public string sign { get; set; }
 
     public MustIncludeWord(ISearchOperation searchOperation)
     {
-        sign = "";
         _searchOperation = searchOperation;
     }
 

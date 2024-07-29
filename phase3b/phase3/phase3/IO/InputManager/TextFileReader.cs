@@ -4,12 +4,7 @@ namespace phase3.FileManager;
 
 public class TextFileReader : IFileReader
 {
-    public List<DataFile> ReadFile(string dataPath)
-    {
-        return ReadFilesFromFolder(dataPath);
-    }
-
-    private List<DataFile> ReadFilesFromFolder(string folderPath)
+    public List<DataFile> ReadFile(string folderPath)
     {
         var files = Directory.GetFiles(folderPath, "*");
         var data = files.Select(file => new DataFile
