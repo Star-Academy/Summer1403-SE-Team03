@@ -7,17 +7,18 @@ namespace phase3.Processor.QueryProcessor;
 public class SearchOperation : ISearchOperation
 {
     private readonly IFileReader _textFileReader;
-    private readonly IEngineProcessor _engineProcessor;
-    public SearchOperation(IFileReader textFileReader , IEngineProcessor engineProcessor )
+    private readonly ISearchIndexManager _searchIndexManager;
+
+    public SearchOperation(IFileReader textFileReader, ISearchIndexManager searchIndexManager)
     {
         _textFileReader = textFileReader;
-        _engineProcessor = engineProcessor;
+        _searchIndexManager = searchIndexManager;
     }
 
     public List<string> SearchText(string input)
     {
-        _engineProcessor.SetInvertedIndexDocx(_textFileReader.ReadFile(Resources.dataPath));
-        if (_engineProcessor.GetInvertedIndex().TryGetValue(input, out List<string> documents))
+        if (_searchIndexManager.GetInvertedIndex(_textFileReader.ReadFile(Resources.dataPath))
+            .TryGetValue(input, out List<string> documents))
             return documents;
         return new List<string>();
     }

@@ -13,20 +13,20 @@ public class SearchStrategyFactory : ISearchStrategyFactory
         _strategies = new Dictionary<string, ISearchStrategy>
         {
             {
-                QueryConstants.atLeastOneSign, new ContainOneOfWordSearch(
+                QueryConstants.AtLeastOneSign, new ContainOneOfWordSearch(
                     new SearchOperation(
                         new TextFileReader(),
-                        new EngineProcessor(new FileProcessor(), new InvertedIndexBuilder())))
+                        new SearchIndexManager(new FileProcessor(), new InvertedIndexBuilder())))
             },
             {
-                QueryConstants.mustContainSign,
+                QueryConstants.MustContainSign,
                 new MustIncludeWord(new SearchOperation(new TextFileReader(),
-                    new EngineProcessor(new FileProcessor(), new InvertedIndexBuilder())))
+                    new SearchIndexManager(new FileProcessor(), new InvertedIndexBuilder())))
             },
             {
-                QueryConstants.mustNotContainSign,
+                QueryConstants.MustNotContainSign,
                 new MustNotContainWord(new SearchOperation(new TextFileReader(),
-                    new EngineProcessor(new FileProcessor(), new InvertedIndexBuilder())))
+                    new SearchIndexManager(new FileProcessor(), new InvertedIndexBuilder())))
             }
         };
     }

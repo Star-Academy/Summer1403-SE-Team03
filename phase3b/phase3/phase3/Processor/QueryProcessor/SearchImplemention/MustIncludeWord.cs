@@ -13,7 +13,8 @@ public class MustIncludeWord : ISearchStrategy
     {
         var finalResult = wordsShouldBe
             .Select(word => _searchOperation.SearchText(word))
-            .Aggregate((result, next) => result.Intersect(next).ToList());
+            .Aggregate((result, next) => result
+                .Intersect(next).ToList());
         return finalResult;
     }
 }

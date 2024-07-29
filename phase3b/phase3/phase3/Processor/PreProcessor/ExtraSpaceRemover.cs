@@ -11,7 +11,7 @@ public class ExtraSpaceRemover : ITextOperation
         var result = docx.Select(element => new DataFile
         {
             FileName = element.FileName,
-            Data = Regex.Replace(element.Data, RegexPatternConst._patternExtraSpace, " ")
+            Data = Regex.Replace(element.Data, RegexPatternConst.PatternExtraSpace, " ")
         }).ToList();
         return result;
     }

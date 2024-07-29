@@ -2,7 +2,7 @@ namespace phase3.Models;
 
 public class QueryConstants
 {
-    public const string atLeastOneSign = "+";
-    public const string mustContainSign = "";
-    public const string mustNotContainSign = "-";
+    public const string AtLeastOneSign = "+";
+    public const string MustContainSign = "";
+    public const string MustNotContainSign = "-";
 }

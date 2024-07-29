@@ -26,9 +26,9 @@ public class SearchStrategy
         _searchQueryParser.ManageInputSearchStrategy(SplitSearchInput(upperInputSearch), out atLeastOne,
             out wordsShouldBe,
             out wordsShouldNotBe);
-        var atLeastOneResult = _searchStrategyFactory.GetValueOfKey(QueryConstants.atLeastOneSign).ProcessOnWords(atLeastOne);
-        var wordsShouldBeResult =_searchStrategyFactory.GetValueOfKey(QueryConstants.mustContainSign).ProcessOnWords(wordsShouldBe);
-        var wordsShouldNotBeResult = _searchStrategyFactory.GetValueOfKey(QueryConstants.mustNotContainSign).ProcessOnWords(wordsShouldNotBe);
+        var atLeastOneResult = _searchStrategyFactory.GetValueOfKey(QueryConstants.AtLeastOneSign).ProcessOnWords(atLeastOne);
+        var wordsShouldBeResult =_searchStrategyFactory.GetValueOfKey(QueryConstants.MustContainSign).ProcessOnWords(wordsShouldBe);
+        var wordsShouldNotBeResult = _searchStrategyFactory.GetValueOfKey(QueryConstants.MustNotContainSign).ProcessOnWords(wordsShouldNotBe);
 
         return _searchResultsFilter.GetResult(atLeastOneResult, wordsShouldBeResult, wordsShouldNotBeResult);
     }

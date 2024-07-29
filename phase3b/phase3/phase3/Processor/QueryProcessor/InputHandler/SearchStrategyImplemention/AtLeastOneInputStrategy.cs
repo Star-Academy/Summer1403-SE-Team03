@@ -1,3 +1,4 @@
+using phase3.Models;
 using phase3.Processor.QueryProcessor.SearchStrategy.IFilterStrategy;
 
 namespace phase3.Processor.QueryProcessor.SearchStrategy.SearchStrategyImplemention;
@@ -9,9 +10,9 @@ public class AtLeastOneInputStrategy : IInputSearchStrategy
         List<string> atLeastOne = new List<string>();
         foreach (string word in inputWords)
         {
-            if (word.StartsWith('+'))
+            if (word.StartsWith(QueryConstants.AtLeastOneSign))
             {
-                atLeastOne.Add(word.TrimStart('+'));
+                atLeastOne.Add(word.TrimStart(Char.Parse(QueryConstants.AtLeastOneSign)));
             }
         }
 

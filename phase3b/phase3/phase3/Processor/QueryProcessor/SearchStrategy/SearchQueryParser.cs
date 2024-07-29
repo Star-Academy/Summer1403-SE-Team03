@@ -9,15 +9,8 @@ public class SearchQueryParser
     public void ManageInputSearchStrategy(IReadOnlyList<string> splitInput, out List<string> atLeastOne,
         out List<string> wordsShouldBe, out List<string> wordsShouldNotBe)
     {
-        try
-        {
-            atLeastOne = new List<string>(new AtLeastOneInputStrategy().Apply(splitInput));
-            wordsShouldBe = new List<string>(new MustIncludeInputStrategy().Apply(splitInput));
-            wordsShouldNotBe = new List<string>(new MustNotContainInputStrategy().Apply(splitInput));
-        }
-        catch (InvalidInputException e)
-        {
-            throw e;
-        }
+        atLeastOne = new List<string>(new AtLeastOneInputStrategy().Apply(splitInput));
+        wordsShouldBe = new List<string>(new MustIncludeInputStrategy().Apply(splitInput));
+        wordsShouldNotBe = new List<string>(new MustNotContainInputStrategy().Apply(splitInput));
     }
 }
