@@ -7,10 +7,26 @@ namespace phase3.Processor;
 
 public class EngineProcessor : IEngineProcessor
 {
-    public Dictionary<string, List<string>> InvertedIndexDictionary { get; set; }
-    public void SetInvertedIndexDocx(List<DataFile> dataFiles)
+    private readonly IFileProcessor _fileProcessor;
+    private readonly InvertedIndexBuilder _invertedIndexBuilder ;
+    public Dictionary<string, List<string>> InvertedIndexDictionary { get;private set; }
+    
+    public EngineProcessor(IFileProcessor fileProcessor , InvertedIndexBuilder invertedIndexBuilder)
     {
-        var data = FileProcessor.ProcessDocumentsForIndexing(dataFiles);
-        InvertedIndexDictionary = InvertedIndexBuilder.BuildInvertedIndex(data);
+        _fileProcessor = fileProcessor;
+        _invertedIndexBuilder = invertedIndexBuilder;
     }
+    
+    public void SetInvertedIndexDocx(List<DataFile> dataFiles) 
+    {
+        var data = _fileProcessor.ProcessDocumentsForIndexing(dataFiles);
+        InvertedIndexDictionary = _invertedIndexBuilder.BuildInvertedIndex(data);
+    }
+
+    public Dictionary<String, List<String>> GetInvertedIndex()
+    {
+        return InvertedIndexDictionary;
+    }
+    
+    
 }

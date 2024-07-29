@@ -3,15 +3,15 @@ using phase3.Models;
 
 namespace phase3.Processor;
 
-public class ExtraSpaceRemover : ITextOperation
+public class PunctuationRemover : ITextOperation
 {
     public List<DataFile> Execute(List<DataFile> docx)
     {
-        const string pattern = @"\s+";
+        var regex = new Regex(ConstProperties._patternPunctuation);
         var result = docx.Select(element => new DataFile
         {
             FileName = element.FileName,
-            Data = Regex.Replace(element.Data, pattern, " ")
+            Data = string.Join(" ", regex.Split(element.Data))
         }).ToList();
         return result;
     }
