@@ -6,9 +6,28 @@ public class SearchResultsFilter
         List<string> wordsShouldNotBeResult)
     {
         if (atLeastOneResult.Count == 0)
-            return wordsShouldBeResult.Except(wordsShouldNotBeResult).ToList();
+        {
+            return RemoveExcludedElements(wordsShouldBeResult, wordsShouldNotBeResult);
+        }
+
         if (wordsShouldBeResult.Count == 0)
-            return atLeastOneResult.Except(wordsShouldNotBeResult).ToList();
-        return atLeastOneResult.Intersect(wordsShouldBeResult).Except(wordsShouldNotBeResult).ToList();
+        {
+            return RemoveExcludedElements(atLeastOneResult, wordsShouldNotBeResult);
+        }
+
+        var intersection = GetIntersection(atLeastOneResult, wordsShouldBeResult);
+        return RemoveExcludedElements(intersection, wordsShouldNotBeResult);
+    }
+
+    private IEnumerable<string> GetIntersection(IEnumerable<string> firstCollection,
+        IEnumerable<string> secondCollection)
+    {
+        return firstCollection.Intersect(secondCollection).ToList();
+    }
+
+    private IEnumerable<string> RemoveExcludedElements(IEnumerable<string> source,
+        IEnumerable<string> elementsToExclude)
+    {
+        return source.Except(elementsToExclude).ToList();
     }
 }
