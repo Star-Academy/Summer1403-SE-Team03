@@ -18,7 +18,7 @@ public class ContainOneWordSearchTest
     public void ProcessOnWord_ShouldReturnUniqueResult_WhenInputContainAnyWordOfList()
     {
         // arrange
-        var inputData = new List<string> { "mahdi","mahshad"};
+        var inputData = new List<string> { "mahdi", "mahshad" };
         var expectedData = new Dictionary<string, List<string>>
         {
             { "mahdi", new List<string> { "5000", "5001", "5002" } },
@@ -30,19 +30,19 @@ public class ContainOneWordSearchTest
         _mockContainOneOfWordSearch.Setup(x => x.SearchText("mahdi")).Returns(expectedData["mahdi"]);
         // act
         var resultProcessOnWords = _containOneOfWordSearch.ProcessOnWords(inputData);
-        
+
         // assert
-        Assert.Equal(result , resultProcessOnWords);
+        Assert.Equal(result, resultProcessOnWords);
     }
-    
+
     [Fact]
     public void ProcessOnWord_ShouldReturnUniqueResult_WhenInputContainDuplicateList()
     {
         // arrange
-        var inputData = new List<string> { "mahdi","mahshad"};
+        var inputData = new List<string> { "mahdi", "mahshad" };
         var expectedData = new Dictionary<string, List<string>>
         {
-            { "mahdi", new List<string> { "5000", "5001"  } },
+            { "mahdi", new List<string> { "5000", "5001" } },
             { "mahshad", new List<string> { "5000", "5001" } },
         };
         var result = new List<string> { "5000", "5001" };
@@ -51,15 +51,16 @@ public class ContainOneWordSearchTest
         _mockContainOneOfWordSearch.Setup(x => x.SearchText("mahdi")).Returns(expectedData["mahdi"]);
         // act
         var resultProcessOnWords = _containOneOfWordSearch.ProcessOnWords(inputData);
-        
+
         // assert
-        Assert.Equal(result , resultProcessOnWords);
+        Assert.Equal(result, resultProcessOnWords);
     }
+
     [Fact]
-    public void ProcessOnWord_ShouldReturnUniqueResult_WhenInputContainNoWord()
+    public void ProcessOnWord_ShouldReturnEmptyList_WhenInputContainNoWord()
     {
         // arrange
-        var inputData = new List<string> {};
+        var inputData = new List<string> { };
         var expectedData = new Dictionary<string, List<string>>
         {
             { "mahdi", new List<string> { "5000", "5001" } },
@@ -71,8 +72,8 @@ public class ContainOneWordSearchTest
         _mockContainOneOfWordSearch.Setup(x => x.SearchText("mahdi")).Returns(expectedData["mahdi"]);
         // act
         var resultProcessOnWords = _containOneOfWordSearch.ProcessOnWords(inputData);
-        
+
         // assert
-        Assert.Equal(result , resultProcessOnWords);
+        Assert.Equal(result, resultProcessOnWords);
     }
 }
