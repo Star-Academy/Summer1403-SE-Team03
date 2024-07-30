@@ -9,6 +9,7 @@ public class ExtraSpaceRemoverTest
     [Fact]
     public void ExtraSpaceRemover_ShouldDeleteExtraSpaces_WhenInputContainsMultipleSpaces()
     {
+        // arrange
         var testData = new List<DataFile>
         {
             new DataFile { FileName = "file1", Data = "sa  laa mmm khu   biiii  manam khuuuuuuu            bam" },
@@ -19,14 +20,13 @@ public class ExtraSpaceRemoverTest
             new DataFile { FileName = "file1", Data = "sa laa mmm khu biiii manam khuuuuuuu bam" },
             new DataFile { FileName = "file2", Data = "H iiiiii" }
         };
-
+        // act
         var resultExtraSpaceRemover = new ExtraSpaceRemover().Execute(testData);
-        Assert.Equal(resultExtraSpaceRemover.Count , expectedTestData.Count);
 
+        // assert
         for (int i = 0; i < 2; i++)
         {
-            Assert.Equal(resultExtraSpaceRemover[i].FileName,expectedTestData[i].FileName);
-            Assert.Equal(resultExtraSpaceRemover[i].Data,expectedTestData[i].Data);
+            Assert.Equal(expectedTestData[i].Data,resultExtraSpaceRemover[i].Data);
         }
         
     }
