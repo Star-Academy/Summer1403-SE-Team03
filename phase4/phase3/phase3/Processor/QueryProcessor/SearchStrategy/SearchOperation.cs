@@ -17,9 +17,13 @@ public class SearchOperation : ISearchOperation
 
     public List<string> SearchText(string input)
     {
-        if (_searchIndexManager.GetInvertedIndex(_textFileReader.ReadFile(Resources.dataPath))
-            .TryGetValue(input, out List<string> documents))
+        var dataFiles = _textFileReader.ReadFile(Resources.dataPath);
+        var documents = _searchIndexManager.GetInvertedIndex(dataFiles)
+            .GetValueOrDefault(input);
+        if (documents is null)
+        {
+            return new List<string>();
+        }
             return documents;
-        return new List<string>();
     }
 }

@@ -25,7 +25,7 @@ public class InvertedIndexBuilder : IInvertedIndexBuilder
         }
     }
 
-    private static void InvertedHandler(Dictionary<string, List<string>> invertedData, DataFile element, string elementWord)
+    private void InvertedHandler(Dictionary<string, List<string>> invertedData, DataFile element, string elementWord)
     {
         if (!invertedData.ContainsKey(elementWord))
         {
