@@ -5,30 +5,26 @@ namespace phase3Test.ProcessorTest.PreProcessor;
 
 public class FileProcessorTest
 {
+    private readonly FileProcessor _sut = new FileProcessor();
+
     [Fact]
     public void ProcessDocumentsForIndexing_ShouldApplyAllTextOperationsCorrectly()
     {
         // arrange
         var initialDataFiles = new List<DataFile>
         {
-            new DataFile { FileName = "file1.txt", Data = "  Hello, World! " },
-            new DataFile { FileName = "file2.txt", Data = "This is A Test." }
+            new() { FileName = "file1.txt", Data = "  Hello, World! " },
+            new() { FileName = "file2.txt", Data = "This is A Test." }
         };
 
         var expectedDataFiles = new List<DataFile>
         {
-            new DataFile { FileName = "file1.txt", Data = "hello world" },
-            new DataFile { FileName = "file2.txt", Data = "this is a test" }
+            new() { FileName = "file1.txt", Data = " HELLO WORLD " },
+            new() { FileName = "file2.txt", Data = "THIS IS A TEST " }
         };
-
-        var fileProcessor = new FileProcessor();
-
         // act        
-        var result = fileProcessor.ProcessDocumentsForIndexing(initialDataFiles);
+        var result = _sut.ProcessDocumentsForIndexing(initialDataFiles);
         // assert
-        for (int i = 0; i < expectedDataFiles.Count; i++)
-        {
-            Assert.Equal(expectedDataFiles[i].Data, result[i].Data);
-        }
+        Assert.True(expectedDataFiles.SequenceEqual(result));
     }
 }

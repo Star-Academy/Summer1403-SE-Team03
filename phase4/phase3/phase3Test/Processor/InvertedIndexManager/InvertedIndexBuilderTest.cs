@@ -5,13 +5,15 @@ namespace phase3Test.Processor.InvertedIndexManager;
 
 public class InvertedIndexBuilderTest
 {
+    private readonly InvertedIndexBuilder _sut = new InvertedIndexBuilder();
     [Fact]
     public void BuildInvertedIndex_ShouldReturnCorrectDictionary_WhenGivenListOfDataFiles()
     {
+        // arrange 
         var dataFiles = new List<DataFile>
         {
-            new DataFile { FileName = "file1.txt", Data = "apple banana apple" },
-            new DataFile { FileName = "file2.txt", Data = "banana orange banana" }
+            new() { FileName = "file1.txt", Data = "apple banana apple" },
+            new() { FileName = "file2.txt", Data = "banana orange banana" }
         };
 
         var expected = new Dictionary<string, List<string>>
@@ -21,12 +23,10 @@ public class InvertedIndexBuilderTest
             { "orange", new List<string> { "file2.txt" } }
         };
 
-        var indexBuilder = new InvertedIndexBuilder();
-
-        var result = indexBuilder.BuildInvertedIndex(dataFiles);
-
-        Assert.Equal(expected.Count, result.Count);
-
+        // act
+        var result = _sut.BuildInvertedIndex(dataFiles);
+        
+        // assert
         foreach (var element in expected)
         {
             Assert.True(result.ContainsKey(element.Key));

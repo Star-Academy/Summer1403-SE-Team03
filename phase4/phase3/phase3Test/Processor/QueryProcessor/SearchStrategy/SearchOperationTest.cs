@@ -27,18 +27,18 @@ public class SearchOperationTest
         // arrange
         var mockDataFiles = new List<DataFile>
         {
-            new DataFile { FileName = "file1.txt", Data = "some data" }
+            new() { FileName = "file1.txt", Data = "some data" }
         };
 
-        var expectedData = new Dictionary<string, List<string>>
+        var data = new Dictionary<string, List<string>>
         {
-            { "mahdi", new List<string> { "5000", "5001", "5002" } },
+            { "mahdi", new List<string> { "5000", "5001", "5002" } }
         };
 
-        var expectedResult = new List<String>() { "5000", "5001", "545645" };
+        var expectedResult = new List<string>() { "5000", "5001", "5002" };
 
         _mockTextFileReader.Setup(y => y.ReadFile(It.IsAny<string>())).Returns(mockDataFiles);
-        _mockSearchIndexManager.Setup(x => x.GetInvertedIndex(mockDataFiles)).Returns(expectedData);
+        _mockSearchIndexManager.Setup(x => x.GetInvertedIndex(mockDataFiles)).Returns(data);
 
 
         // act

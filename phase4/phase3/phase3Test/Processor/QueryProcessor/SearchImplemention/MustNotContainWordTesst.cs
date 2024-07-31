@@ -5,13 +5,13 @@ namespace phase3Test.Processor.QueryProcessor.SearchImplemention;
 
 public class MustNotContainWordTest
 {
-    private readonly MustNotContainWord _mustNotContainWord;
+    private readonly MustNotContainWord _sut;
     private readonly Mock<ISearchOperation> _mockMustNotContainWordSearch;
 
     public MustNotContainWordTest()
     {
         _mockMustNotContainWordSearch = new Mock<ISearchOperation>();
-        _mustNotContainWord = new MustNotContainWord(_mockMustNotContainWordSearch.Object);
+        _sut = new MustNotContainWord(_mockMustNotContainWordSearch.Object);
     }
 
     [Fact]
@@ -22,14 +22,14 @@ public class MustNotContainWordTest
         var expectedData = new Dictionary<string, List<string>>
         {
             { "mahdi", new List<string> { "5000", "5001", "5002" } },
-            { "mahshad", new List<string> { "5000", "5001" } },
+            { "mahshad", new List<string> { "5000", "5001" } }
         };
         var result = new List<string> { "5000", "5001", "5002" };
 
         _mockMustNotContainWordSearch.Setup(x => x.SearchText("mahshad")).Returns(expectedData["mahshad"]);
         _mockMustNotContainWordSearch.Setup(x => x.SearchText("mahdi")).Returns(expectedData["mahdi"]);
         // act
-        var resultProcessOnWords = _mustNotContainWord.ProcessOnWords(inputData);
+        var resultProcessOnWords = _sut.ProcessOnWords(inputData);
 
         // assert
         Assert.Equal(result, resultProcessOnWords);
@@ -43,14 +43,14 @@ public class MustNotContainWordTest
         var expectedData = new Dictionary<string, List<string>>
         {
             { "mahdi", new List<string> { "5000", "5001" } },
-            { "mahshad", new List<string> { "5000", "5001" } },
+            { "mahshad", new List<string> { "5000", "5001" } }
         };
         var result = new List<string> { "5000", "5001" };
 
         _mockMustNotContainWordSearch.Setup(x => x.SearchText("mahshad")).Returns(expectedData["mahshad"]);
         _mockMustNotContainWordSearch.Setup(x => x.SearchText("mahdi")).Returns(expectedData["mahdi"]);
         // act
-        var resultProcessOnWords = _mustNotContainWord.ProcessOnWords(inputData);
+        var resultProcessOnWords = _sut.ProcessOnWords(inputData);
 
         // assert
         Assert.Equal(result, resultProcessOnWords);
@@ -64,14 +64,14 @@ public class MustNotContainWordTest
         var expectedData = new Dictionary<string, List<string>>
         {
             { "mahdi", new List<string> { "5000", "5001" } },
-            { "mahshad", new List<string> { "5000", "5001" } },
+            { "mahshad", new List<string> { "5000", "5001" } }
         };
         var result = new List<string> { };
 
         _mockMustNotContainWordSearch.Setup(x => x.SearchText("mahshad")).Returns(expectedData["mahshad"]);
         _mockMustNotContainWordSearch.Setup(x => x.SearchText("mahdi")).Returns(expectedData["mahdi"]);
         // act
-        var resultProcessOnWords = _mustNotContainWord.ProcessOnWords(inputData);
+        var resultProcessOnWords = _sut.ProcessOnWords(inputData);
 
         // assert
         Assert.Equal(result, resultProcessOnWords);

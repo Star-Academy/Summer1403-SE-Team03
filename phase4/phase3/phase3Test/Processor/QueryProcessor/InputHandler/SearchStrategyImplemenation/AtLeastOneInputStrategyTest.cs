@@ -4,17 +4,17 @@ namespace phase3Test.Processor.QueryProcessor.InputHandler.SearchStrategyImpleme
 
 public class AtLeastOneInputStrategyTest
 {
+    private readonly AtLeastOneInputStrategy _sut = new AtLeastOneInputStrategy();
+
     [Fact]
     public void AtLeastOneInputStrategy_ShouldSplitPluses_WhenInputContainPlusSign()
     {
         // arrange
-        List<string> testData = new List<string> { "+salam", "+mahdi", "-sara", "*das", "ali" };
+        List<string> testData = new() { "+salam", "+mahdi", "-sara", "*das", "ali" };
 
-        List<String> expectedTestData = new List<string> { "salam", "mahdi" };
-
-        AtLeastOneInputStrategy atLeastOneInputStrategy = new AtLeastOneInputStrategy();
+        List<string> expectedTestData = new() { "salam", "mahdi" };
         // act
-        var result = atLeastOneInputStrategy.Apply(testData);
+        var result = _sut.Apply(testData);
         // assert
         Assert.True(expectedTestData.Count == result.Count);
     }
@@ -23,11 +23,10 @@ public class AtLeastOneInputStrategyTest
     public void AtLeastOneInputStrategy_ShouldNotContainAnyWord_WhenInputNotContainAnyWord()
     {
         // arrange
-        List<String> testData = new List<string>() { };
-        List<String> expectedTestData = new List<string>();
-        AtLeastOneInputStrategy atLeastOneInputStrategy = new AtLeastOneInputStrategy();
+        List<string> testData = new() { };
+        List<string> expectedTestData = new();
         // act
-        List<String> result = atLeastOneInputStrategy.Apply(testData);
+        var result = _sut.Apply(testData);
         // assert
         Assert.Equal(expectedTestData, result);
     }

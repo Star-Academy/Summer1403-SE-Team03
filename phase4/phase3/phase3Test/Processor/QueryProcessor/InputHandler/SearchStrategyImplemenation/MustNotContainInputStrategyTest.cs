@@ -4,17 +4,18 @@ namespace phase3Test.Processor.QueryProcessor.InputHandler.SearchStrategyImpleme
 
 public class MustNotContainInputStrategyTest
 {
+    private readonly MustNotContainInputStrategy _sut = new MustNotContainInputStrategy();
+
     [Fact]
     public void MustNotContainInputStrategy_ShouldSplitMinesWord_WhenInputContainMinesSign()
     {
         //arrange
-        List<String> testData = new List<string> { "+salam", "+mahdi", "-sara", "ali" };
+        List<string> testData = new() { "+salam", "+mahdi", "-sara", "ali" };
 
-        List<String> expectedTestData = new List<string> { "sara" };
+        List<string> expectedTestData = new() { "sara" };
 
-        MustNotContainInputStrategy mustNotContainInputStrategy = new MustNotContainInputStrategy();
         // act
-        var result = mustNotContainInputStrategy.Apply(testData);
+        var result = _sut.Apply(testData);
         // assert
         Assert.True(expectedTestData.Count == result.Count);
     }
@@ -23,11 +24,10 @@ public class MustNotContainInputStrategyTest
     public void MustNotContainInputStrategy_ShouldNotContainAnyWord_WhenInputNotContainAnyWord()
     {
         //arrange
-        List<String> testData = new List<string>() { };
-        List<String> expectedTestData = new List<string>();
-        MustNotContainInputStrategy mustNotContainInputStrategy = new MustNotContainInputStrategy();
+        List<string> testData = new() { };
+        List<string> expectedTestData = new();
         // act
-        List<String> result = mustNotContainInputStrategy.Apply(testData);
+        var result = _sut.Apply(testData);
         // assert
         Assert.Equal(expectedTestData, result);
     }

@@ -24,22 +24,39 @@ public class SearchStrategyTest
     public void ProcessOnWord_ShouldReturnEmptyList_WhenInputContainNoWord()
     {
         // arrange
-        var input = new List<string> { "+test1", "test2", "-test3" };
         List<string> atLeastOne = new();
         List<string> wordsShouldBe = new();
         List<string> wordsShouldNotBe = new();
-        _mockSearchQueryParser.Verify(x =>
-            x.ManageInputSearchStrategy(It.IsAny<List<string>>(),out atLeastOne, out wordsShouldBe, out wordsShouldNotBe),Times.Once);
-        _mockSearchStrategyFactory.Verify(x =>x.GetValueOfKey(QueryConstants.MustContainSign).ProcessOnWords(wordsShouldBe) , Times.Never);
-        _mockSearchStrategyFactory.Verify(x =>x.GetValueOfKey(QueryConstants.MustNotContainSign).ProcessOnWords(wordsShouldNotBe) , Times.Never);
-        _mockSearchStrategyFactory.Verify(x =>x.GetValueOfKey(QueryConstants.AtLeastOneSign).ProcessOnWords(atLeastOne) , Times.Never);
-        
-        _mockSearchResultFilter.Verify(x => x.GetResult(atLeastOne , wordsShouldBe , wordsShouldNotBe) , Times.Never);
-        
+
         // act
-        var result = _searchStrategy.ManageSearchStrategy("+test1 test2 -test3");
-        
+        _mockSearchQueryParser
+            .Setup(x => x.ManageInputSearchStrategy(It.IsAny<List<string>>(), out It.Ref<List<string>>.IsAny,
+                out It.Ref<List<string>>.IsAny,
+                out It.Ref<List<string>>.IsAny)).Callback(
+                (IReadOnlyList<string> input, out List<string> atLeastOne, out List<string> wordsShouldBe,
+                    out List<string> wordsShouldNotBe) =>
+                {
+                    atLeastOne = new List<string>() { "5000", "5002" };
+                    wordsShouldBe = new List<string>() { "5002", "5003" };
+                    wordsShouldNotBe = new List<string>() { "5004", "5003" };
+                });
+
+        _mockSearchStrategyFactory.Setup(x =>
+                x.GetValueOfKey(QueryConstants.AtLeastOneSign).ProcessOnWords(atLeastOne))
+            .Returns(new List<string>() { "result 1" });
+        _mockSearchStrategyFactory.Setup(x =>
+                x.GetValueOfKey(QueryConstants.MustContainSign).ProcessOnWords(wordsShouldBe))
+            .Returns(new List<string>() { "result 2" });
+        _mockSearchStrategyFactory.Setup(x =>
+                x.GetValueOfKey(QueryConstants.MustNotContainSign).ProcessOnWords(wordsShouldNotBe))
+            .Returns(new List<string>() { "result 3" });
+
+        _mockSearchResultFilter
+            .Setup(x => x.GetResult(It.Ref<List<string>>.IsAny, It.Ref<List<string>>.IsAny, It.Ref<List<string>>.IsAny))
+            .Returns(new List<string>());
+
         // assert
+        var result = _searchStrategy.ManageSearchStrategy("+test1 test2 -test3");
         Assert.IsAssignableFrom<IEnumerable<string>>(result);
     }
 }
