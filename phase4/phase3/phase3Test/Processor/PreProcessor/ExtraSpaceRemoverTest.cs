@@ -26,8 +26,7 @@ public class ExtraSpaceRemoverTest
         // assert
         for (int i = 0; i < 2; i++)
         {
-            Assert.Equal(expectedTestData[i].Data,resultExtraSpaceRemover[i].Data);
+            Assert.Equal(expectedTestData[i].Data, resultExtraSpaceRemover[i].Data);
         }
-        
     }
 }

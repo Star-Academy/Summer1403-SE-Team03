@@ -4,7 +4,7 @@ using phase3.Processor.QueryProcessor.SearchStrategy.SearchStrategyImplemention;
 
 namespace phase3.Processor.QueryProcessor.SearchStrategy;
 
-public class SearchQueryParser
+public class SearchQueryParser : ISearchQueryParser
 {
     public void ManageInputSearchStrategy(IReadOnlyList<string> splitInput, out List<string> atLeastOne,
         out List<string> wordsShouldBe, out List<string> wordsShouldNotBe)

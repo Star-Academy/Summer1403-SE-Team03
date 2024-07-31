@@ -24,8 +24,7 @@ public class PunctuationRemoverTest
         // assert
         for (int i = 0; i < 2; i++)
         {
-            Assert.Equal(expectedTestData[i].Data , resultPunctuationRemover[i].Data);
+            Assert.Equal(expectedTestData[i].Data, resultPunctuationRemover[i].Data);
         }
-        
     }
 }

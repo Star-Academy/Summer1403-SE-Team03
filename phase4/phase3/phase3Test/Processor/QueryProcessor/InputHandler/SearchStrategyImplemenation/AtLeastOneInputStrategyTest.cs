@@ -8,10 +8,10 @@ public class AtLeastOneInputStrategyTest
     public void AtLeastOneInputStrategy_ShouldSplitPluses_WhenInputContainPlusSign()
     {
         // arrange
-        List<String> testData = new List<string> { "+salam", "+mahdi", "-sara", "*das", "ali" };
+        List<string> testData = new List<string> { "+salam", "+mahdi", "-sara", "*das", "ali" };
 
         List<String> expectedTestData = new List<string> { "salam", "mahdi" };
- 
+
         AtLeastOneInputStrategy atLeastOneInputStrategy = new AtLeastOneInputStrategy();
         // act
         var result = atLeastOneInputStrategy.Apply(testData);

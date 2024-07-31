@@ -4,9 +4,9 @@ namespace phase3.IO.OutPutManager;
 
 public class ConsoleOutput : IOutput<List<string>>
 {
-    private readonly SearchStrategy _searchStrategy;
+    private readonly ISearchStrategy _searchStrategy;
 
-    public ConsoleOutput(SearchStrategy searchStrategy)
+    public ConsoleOutput(ISearchStrategy searchStrategy)
     {
         _searchStrategy = searchStrategy;
     }

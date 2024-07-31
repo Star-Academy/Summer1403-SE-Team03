@@ -6,11 +6,11 @@ namespace phase3.Processor.QueryProcessor.SearchStrategy;
 
 public class SearchStrategyFactory : ISearchStrategyFactory
 {
-    private readonly IReadOnlyDictionary<string, ISearchStrategy> _strategies;
-    
+    private readonly IReadOnlyDictionary<string, IInputManagement> _strategies;
+
     public SearchStrategyFactory()
     {
-        _strategies = new Dictionary<string, ISearchStrategy>
+        _strategies = new Dictionary<string, IInputManagement>
         {
             {
                 QueryConstants.AtLeastOneSign, new ContainOneOfWordSearch(
@@ -31,7 +31,7 @@ public class SearchStrategyFactory : ISearchStrategyFactory
         };
     }
 
-    public ISearchStrategy GetValueOfKey(string key)
+    public IInputManagement GetValueOfKey(string key)
     {
         return _strategies[key];
     }

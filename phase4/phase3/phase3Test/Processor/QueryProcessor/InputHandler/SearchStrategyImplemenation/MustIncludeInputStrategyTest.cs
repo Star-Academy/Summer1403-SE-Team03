@@ -18,16 +18,14 @@ public class MustIncludeInputStrategyTest
         // assert
         Assert.True(expectedTestData.Count == result.Count);
     }
-    
+
     [Fact]
     public void MustIncludeInputStrategy_ShouldNotContainAnyWord_WhenInputNotContainAnyWord()
     {
-        List<String> testData = new List<string>(){};
+        List<String> testData = new List<string>() { };
         List<String> expectedTestData = new List<string>();
         MustIncludeInputStrategy mustIncludeInputStrategy = new MustIncludeInputStrategy();
         List<String> result = mustIncludeInputStrategy.Apply(testData);
         Assert.Equal(expectedTestData, result);
     }
-    
-
 }

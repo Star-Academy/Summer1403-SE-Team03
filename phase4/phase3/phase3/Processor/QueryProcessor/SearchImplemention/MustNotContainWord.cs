@@ -1,6 +1,6 @@
 namespace phase3.Processor.QueryProcessor.SearchStrategy;
 
-public class MustNotContainWord : ISearchStrategy
+public class MustNotContainWord : IInputManagement
 {
     private readonly ISearchOperation _searchOperation;
 

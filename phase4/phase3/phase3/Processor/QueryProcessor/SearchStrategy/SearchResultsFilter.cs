@@ -1,6 +1,6 @@
 namespace phase3.Processor.QueryProcessor.SearchStrategy;
 
-public class SearchResultsFilter
+public class SearchResultsFilter : ISearchResultsFilter
 {
     public IEnumerable<string> GetResult(List<string> atLeastOneResult, List<string> wordsShouldBeResult,
         List<string> wordsShouldNotBeResult)

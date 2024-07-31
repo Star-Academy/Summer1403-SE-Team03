@@ -1,16 +1,15 @@
-using phase3.FileManager;
-using phase3.InvertedIndexManager;
 using phase3.Models;
 
 namespace phase3.Processor.QueryProcessor.SearchStrategy;
 
-public class SearchStrategy
+public class SearchStrategy : ISearchStrategy
 {
     private readonly ISearchStrategyFactory _searchStrategyFactory;
-    private readonly SearchQueryParser _searchQueryParser;
-    private readonly SearchResultsFilter _searchResultsFilter;
+    private readonly ISearchQueryParser _searchQueryParser;
+    private readonly ISearchResultsFilter _searchResultsFilter;
 
-    public SearchStrategy(ISearchStrategyFactory searchStrategyFactory , SearchQueryParser searchQueryParser , SearchResultsFilter searchResultsFilter )
+    public SearchStrategy(ISearchStrategyFactory searchStrategyFactory, ISearchQueryParser searchQueryParser,
+        ISearchResultsFilter searchResultsFilter)
     {
         _searchStrategyFactory = searchStrategyFactory;
         _searchQueryParser = searchQueryParser;
@@ -26,9 +25,12 @@ public class SearchStrategy
         _searchQueryParser.ManageInputSearchStrategy(SplitSearchInput(upperInputSearch), out atLeastOne,
             out wordsShouldBe,
             out wordsShouldNotBe);
-        var atLeastOneResult = _searchStrategyFactory.GetValueOfKey(QueryConstants.AtLeastOneSign).ProcessOnWords(atLeastOne);
-        var wordsShouldBeResult =_searchStrategyFactory.GetValueOfKey(QueryConstants.MustContainSign).ProcessOnWords(wordsShouldBe);
-        var wordsShouldNotBeResult = _searchStrategyFactory.GetValueOfKey(QueryConstants.MustNotContainSign).ProcessOnWords(wordsShouldNotBe);
+        var atLeastOneResult = _searchStrategyFactory.GetValueOfKey(QueryConstants.AtLeastOneSign)
+            .ProcessOnWords(atLeastOne);
+        var wordsShouldBeResult = _searchStrategyFactory.GetValueOfKey(QueryConstants.MustContainSign)
+            .ProcessOnWords(wordsShouldBe);
+        var wordsShouldNotBeResult = _searchStrategyFactory.GetValueOfKey(QueryConstants.MustNotContainSign)
+            .ProcessOnWords(wordsShouldNotBe);
 
         return _searchResultsFilter.GetResult(atLeastOneResult, wordsShouldBeResult, wordsShouldNotBeResult);
     }

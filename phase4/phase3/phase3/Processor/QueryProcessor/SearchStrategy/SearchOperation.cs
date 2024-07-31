@@ -24,6 +24,7 @@ public class SearchOperation : ISearchOperation
         {
             return new List<string>();
         }
-            return documents;
+
+        return documents;
     }
 }

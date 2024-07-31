@@ -21,7 +21,7 @@ public class InvertedIndexBuilderTest
             { "orange", new List<string> { "file2.txt" } }
         };
 
-        var indexBuilder = new InvertedIndexBuilder(); 
+        var indexBuilder = new InvertedIndexBuilder();
 
         var result = indexBuilder.BuildInvertedIndex(dataFiles);
 

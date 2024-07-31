@@ -1,6 +1,6 @@
 namespace phase3.Processor.QueryProcessor.SearchStrategy;
 
-public class MustIncludeWord : ISearchStrategy
+public class MustIncludeWord : IInputManagement
 {
     private readonly ISearchOperation _searchOperation;
 
@@ -15,6 +15,7 @@ public class MustIncludeWord : ISearchStrategy
         {
             throw new InvalidOperationException("Input list cannot be empty");
         }
+
         var finalResult = wordsShouldBe
             .Select(word => _searchOperation.SearchText(word))
             .Aggregate((result, next) => result
