@@ -10,7 +10,7 @@ public class UpperCaseMakerTest
     [Fact]
     public void UpperCaseMaker_ShouldMakeUpperInput_WhenInputHaveLowerChar()
     {
-        // arrange
+        // Arrange
         var testData = new List<DataFile>
         {
             new() { FileName = "file1", Data = "tesT1 is HerE" },
@@ -18,14 +18,14 @@ public class UpperCaseMakerTest
         };
         var expectedTestData = new List<DataFile>
         {
-            new() { FileName = "file1", Data = "TEST1 IS HERE" }, 
+            new() { FileName = "file1", Data = "TEST1 IS HERE" },
             new() { FileName = "file2", Data = "HIIIIII" }
         };
-        
-        // act
+
+        // Act
         var resultUpperMaker = _sut.Execute(testData);
-        
-        // assert
+
+        // Assert
         Assert.True(expectedTestData.SequenceEqual(resultUpperMaker));
     }
 }

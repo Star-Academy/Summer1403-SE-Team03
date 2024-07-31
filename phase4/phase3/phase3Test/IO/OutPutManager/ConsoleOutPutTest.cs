@@ -18,23 +18,27 @@ public class ConsoleOutPutTest
     [Fact]
     public void OutputProcess_ShouldReturnUniqueResult_WhenInputContainWordAndResultIsNotEmpty()
     {
-        // arrange
+        // Arrange
         _mockSearchStrategy.Setup(x => x.ManageSearchStrategy(It.IsAny<string>()))
             .Returns(new List<string> { "test1" });
-        // act
+
+        // Act
         var result = _sut.OutputProcess("mahdi");
-        // assert
+
+        // Assert
         Assert.IsType<List<string>>(result);
     }
 
     [Fact]
     public void OutputProcess_ShouldReturnEmptyList_WhenInputContainWordAndResultIsEmpty()
     {
-        // arrange
+        // Arrange
         _mockSearchStrategy.Setup(x => x.ManageSearchStrategy(It.IsAny<string>())).Returns(new List<string> { });
-        // act
+
+        // Act
         var result = _sut.OutputProcess("mahdi");
-        // assert
+
+        // Assert
         Assert.IsType<List<string>>(result);
     }
 }

@@ -17,7 +17,7 @@ public class MustIncludeWordTest
     [Fact]
     public void ProcessOnWord_ShouldReturnUniqueResult_WhenInputContainWord()
     {
-        // arrange
+        // Arrange
         var inputData = new List<string> { "mahdi", "mahshad" };
         var expectedData = new Dictionary<string, List<string>>
         {
@@ -28,11 +28,11 @@ public class MustIncludeWordTest
 
         _mockMustIncludeWordSearch.Setup(x => x.SearchText("mahshad")).Returns(expectedData["mahshad"]);
         _mockMustIncludeWordSearch.Setup(x => x.SearchText("mahdi")).Returns(expectedData["mahdi"]);
-        
-        // act
+
+        // Act
         var resultProcessOnWords = _sut.ProcessOnWords(inputData);
 
-        // assert
+        // Assert
         Assert.Equal(result, resultProcessOnWords);
     }
 }

@@ -9,28 +9,28 @@ public class AtLeastOneInputStrategyTest
     [Fact]
     public void AtLeastOneInputStrategy_ShouldSplitPluses_WhenInputContainPlusSign()
     {
-        // arrange
+        // Arrange
         List<string> testData = new() { "+salam", "+mahdi", "-sara", "*das", "ali" };
         List<string> expectedTestData = new() { "salam", "mahdi" };
-        
-        // act
+
+        // Act
         var result = _sut.Apply(testData);
-        
-        // assert
+
+        // Assert
         Assert.True(expectedTestData.Count == result.Count);
     }
 
     [Fact]
     public void AtLeastOneInputStrategy_ShouldNotContainAnyWord_WhenInputNotContainAnyWord()
     {
-        // arrange
+        // Arrange
         List<string> testData = new() { };
         List<string> expectedTestData = new();
-        
-        // act
+
+        // Act
         var result = _sut.Apply(testData);
-        
-        // assert
+
+        // Assert
         Assert.Equal(expectedTestData, result);
     }
 }

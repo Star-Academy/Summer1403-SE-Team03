@@ -10,7 +10,7 @@ public class ExtraSpaceRemoverTest
     [Fact]
     public void ExtraSpaceRemover_ShouldReturnStringNotContainExtraSpace_WhenInputContainsMultipleSpaces()
     {
-        // arrange
+        // Arrange
         var testData = new List<DataFile>
         {
             new() { FileName = "file1", Data = "Te  s   t   1" },
@@ -23,11 +23,11 @@ public class ExtraSpaceRemoverTest
             new() { FileName = "file2", Data = "H iiiiii" },
             new() { FileName = "file3", Data = "" }
         };
-        
-        // act
+
+        // Act
         var resultExtraSpaceRemover = _sut.Execute(testData);
 
-        // assert
+        // Assert
         Assert.True(expectedTestData.SequenceEqual(resultExtraSpaceRemover));
     }
 }

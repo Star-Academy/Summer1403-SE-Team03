@@ -22,37 +22,37 @@ public class TextFileReaderTest
     [Fact]
     public void ReadFile_ShouldReturnDataFiles_WhenInputIsAddressOfDirectory()
     {
-        // arrange 
+        // Arrange 
         var file1Path = Path.Combine(_testDirectory, "file1.txt");
         File.WriteAllText(file1Path, "This is the content of file1.");
-        
-        // act
+
+        // Act
         var result = _sut.ReadFile(_testDirectory);
-        
-        // assert
+
+        // Assert
         Assert.Contains(result, f => f.FileName == "file1.txt" && f.Data == "This is the content of file1.");
     }
 
     [Fact]
     public void ReadFile_ShouldReturnEmptyList_WhenInputDirectoryDoseNotHaveAnyFile()
     {
-        // act
+        // Act
         var result = _sut.ReadFile(_testDirectory);
-        
-        // arrange
+
+        // Arrange
         Assert.Empty(result);
     }
 
     [Fact]
     public void ReadFile_ShouldThrowDirectoryNotFoundException_WhenDirectoryNotFound()
     {
-        // arrange
+        // Arrange
         var nonExistentDirectory = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
-        
-        // act
+
+        // Act
         Action action = () => _sut.ReadFile(nonExistentDirectory);
-        
-        // assert 
+
+        // Assert 
         Assert.Throws<DirectoryNotFoundException>(action);
     }
 }

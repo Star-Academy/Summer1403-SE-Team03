@@ -23,12 +23,11 @@ public class SearchStrategyTest
     [Fact]
     public void ProcessOnWord_ShouldReturnEmptyList_WhenInputContainNoWord()
     {
-        // arrange
+        // Arrange
         List<string> atLeastOne = new();
         List<string> wordsShouldBe = new();
         List<string> wordsShouldNotBe = new();
-
-        // act
+        
         _mockSearchQueryParser
             .Setup(x => x.ManageInputSearchStrategy(It.IsAny<List<string>>(), out It.Ref<List<string>>.IsAny,
                 out It.Ref<List<string>>.IsAny,
@@ -55,8 +54,10 @@ public class SearchStrategyTest
             .Setup(x => x.GetResult(It.Ref<List<string>>.IsAny, It.Ref<List<string>>.IsAny, It.Ref<List<string>>.IsAny))
             .Returns(new List<string>());
 
-        // assert
+        // Act
         var result = _sut.ManageSearchStrategy("+test1 test2 -test3");
+        
+        // Assert
         Assert.IsAssignableFrom<IEnumerable<string>>(result);
     }
 }

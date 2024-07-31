@@ -10,7 +10,7 @@ public class FileProcessorTest
     [Fact]
     public void ProcessDocumentsForIndexing_ShouldApplyAllTextOperationsCorrectly()
     {
-        // arrange
+        // Arrange
         var initialDataFiles = new List<DataFile>
         {
             new() { FileName = "file1.txt", Data = "  Hello, World! " },
@@ -22,11 +22,11 @@ public class FileProcessorTest
             new() { FileName = "file1.txt", Data = " HELLO WORLD " },
             new() { FileName = "file2.txt", Data = "THIS IS A TEST " }
         };
-        
-        // act        
+
+        // Act        
         var result = _sut.ProcessDocumentsForIndexing(initialDataFiles);
-        
-        // assert
+
+        // Assert
         Assert.True(expectedDataFiles.SequenceEqual(result));
     }
 }

@@ -20,9 +20,9 @@ public class SearchOperationTest
     }
 
     [Fact]
-    public void ProcessOnWord_ShouldReturnEmptyList_WhenInputContainNoWord()
+    public void SearchText_ShouldReturnInvertedIndexDictionary_WhenInputContainWord()
     {
-        // arrange
+        // Arrange
         var mockDataFiles = new List<DataFile>
         {
             new() { FileName = "file1.txt", Data = "some data" }
@@ -39,11 +39,26 @@ public class SearchOperationTest
         _mockSearchIndexManager.Setup(x => x.GetInvertedIndex(mockDataFiles)).Returns(data);
 
 
-        // act
+        // Act
         var resultProcessOnWords = _sut.SearchText("mahdi");
 
 
-        // assert
+        // Assert
         Assert.Equal(expectedResult, resultProcessOnWords);
+    }
+
+    [Fact]
+    public void SearchText_ShouldReturnEmptyList_WhenDocumentsAreNull()
+    {
+        // Arrange
+        _mockTextFileReader.Setup(x => x.ReadFile(It.IsAny<string>())).Returns(new List<DataFile>());
+        _mockSearchIndexManager.Setup(x => x.GetInvertedIndex(It.IsAny<List<DataFile>>()))
+            .Returns(new Dictionary<string, List<string>>());
+
+        // Act
+        var result = _sut.SearchText("nonexistent");
+
+        // Assert
+        Assert.Empty(result);
     }
 }

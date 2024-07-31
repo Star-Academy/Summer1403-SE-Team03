@@ -17,36 +17,36 @@ public class SearchStrategyFactoryTest
     [Fact]
     public void GetValueOfKey_ShouldReturnIInputManagementObject_WhenInputIsAtLeastOneSign()
     {
-        // arrange
+        // Arrange
         var mockSearchStrategy = new Mock<IInputManagement>();
         _mockSearchStrategyFactory.Setup(x => x.GetValueOfKey(It.IsAny<string>())).Returns(mockSearchStrategy.Object);
-        // act
+        // Act
         var result = _sut.GetValueOfKey(QueryConstants.AtLeastOneSign);
-        // assert
+        // Assert
         Assert.IsAssignableFrom<IInputManagement>(result);
     }
 
     [Fact]
     public void GetValueOfKey_ShouldReturnIInputManagementObject_WhenInputIsMustNotContainSign()
     {
-        // arrange
+        // Arrange
         var mockSearchStrategy = new Mock<IInputManagement>();
         _mockSearchStrategyFactory.Setup(x => x.GetValueOfKey(It.IsAny<string>())).Returns(mockSearchStrategy.Object);
-        // act
+        // Act
         var result = _sut.GetValueOfKey(QueryConstants.MustNotContainSign);
-        // assert
+        // Assert
         Assert.IsAssignableFrom<IInputManagement>(result);
     }
 
     [Fact]
     public void GetValueOfKey_ShouldReturnIInputManagementObject_WhenInputIsMustContainSign()
     {
-        // arrange
+        // Arrange
         var mockSearchStrategy = new Mock<IInputManagement>();
         _mockSearchStrategyFactory.Setup(x => x.GetValueOfKey(It.IsAny<string>())).Returns(mockSearchStrategy.Object);
-        // act
+        // Act
         var result = _sut.GetValueOfKey(QueryConstants.MustContainSign);
-        // assert
+        // Assert
         Assert.IsAssignableFrom<IInputManagement>(result);
     }
 }

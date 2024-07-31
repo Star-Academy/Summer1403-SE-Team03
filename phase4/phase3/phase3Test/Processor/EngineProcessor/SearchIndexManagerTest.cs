@@ -22,7 +22,7 @@ public class SearchIndexManagerTest
     [Fact]
     public void GetInvertedIndex_ShouldSetDictionary_WhenInputContainDataFileList()
     {
-        // arrange
+        // Arrange
         var mockDataFiles = new List<DataFile>
         {
             new() { FileName = "file1.txt", Data = "some data" }
@@ -34,10 +34,30 @@ public class SearchIndexManagerTest
         _mockFileProcessor.Setup(x => x.ProcessDocumentsForIndexing(It.IsAny<List<DataFile>>())).Returns(mockDataFiles);
         _mockInvertedIndexBuilder.Setup(x => x.BuildInvertedIndex(It.IsAny<List<DataFile>>())).Returns(expectedData);
 
-        // act
+        // Act
         _sut.GetInvertedIndex(new List<DataFile>());
 
-        // assert
+        // Assert
         Assert.Equal(expectedData, _sut.InvertedIndexDictionary);
+    }
+
+    [Fact]
+    public void GetInvertedIndex_ShouldThrowArgumentNullException_WhenFileProcessorIsNull()
+    {
+        // Act
+        var exception = Record.Exception(() => new SearchIndexManager(null, _mockInvertedIndexBuilder.Object));
+
+        // Assert
+        Assert.IsType<ArgumentNullException>(exception);
+    }
+
+    [Fact]
+    public void GetInvertedIndex_ShouldThrowArgumentNullException_WhenInvertedIndexBuilderIsNull()
+    {
+        // Act
+        var exception = Record.Exception(() => new SearchIndexManager(_mockFileProcessor.Object, null));
+
+        // Assert
+        Assert.IsType<ArgumentNullException>(exception);
     }
 }

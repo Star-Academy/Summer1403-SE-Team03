@@ -9,28 +9,28 @@ public class MustNotContainInputStrategyTest
     [Fact]
     public void MustNotContainInputStrategy_ShouldSplitMinesWord_WhenInputContainMinesSign()
     {
-        //arrange
+        // Arrange
         List<string> testData = new() { "+salam", "+mahdi", "-sara", "ali" };
         List<string> expectedTestData = new() { "sara" };
 
-        // act
+        // Act
         var result = _sut.Apply(testData);
-        
-        // assert
+
+        // Assert
         Assert.True(expectedTestData.Count == result.Count);
     }
 
     [Fact]
     public void MustNotContainInputStrategy_ShouldNotContainAnyWord_WhenInputNotContainAnyWord()
     {
-        //arrange
+        // Arrange
         List<string> testData = new() { };
         List<string> expectedTestData = new();
-        
-        // act
+
+        // Act
         var result = _sut.Apply(testData);
-        
-        // assert
+
+        // Assert
         Assert.Equal(expectedTestData, result);
     }
 }

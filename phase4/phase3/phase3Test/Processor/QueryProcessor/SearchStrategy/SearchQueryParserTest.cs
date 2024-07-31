@@ -5,6 +5,7 @@ namespace phase3Test.Processor.QueryProcessor.SearchStrategy;
 public class SearchQueryParserTest
 {
     private readonly SearchQueryParser _sut = new SearchQueryParser();
+
     [Fact]
     public void ManageInputSearchStrategy_ShouldReturnFilterListStrategies_WhenInputIsValid()
     {

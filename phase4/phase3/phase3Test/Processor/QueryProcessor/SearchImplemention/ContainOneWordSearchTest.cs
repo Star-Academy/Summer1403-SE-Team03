@@ -17,7 +17,7 @@ public class ContainOneWordSearchTest
     [Fact]
     public void ProcessOnWord_ShouldReturnUniqueResult_WhenInputContainAnyWordOfList()
     {
-        // arrange
+        // Arrange
         var inputData = new List<string> { "mahdi", "mahshad" };
         var expectedData = new Dictionary<string, List<string>>
         {
@@ -29,17 +29,17 @@ public class ContainOneWordSearchTest
         _mockContainOneOfWordSearch.Setup(x => x.SearchText("mahshad")).Returns(expectedData["mahshad"]);
         _mockContainOneOfWordSearch.Setup(x => x.SearchText("mahdi")).Returns(expectedData["mahdi"]);
 
-        // act
+        // Act
         var resultProcessOnWords = _sut.ProcessOnWords(inputData);
 
-        // assert
+        // Assert
         Assert.Equal(result, resultProcessOnWords);
     }
 
     [Fact]
     public void ProcessOnWord_ShouldReturnUniqueResult_WhenInputContainDuplicateList()
     {
-        // arrange
+        // Arrange
         var inputData = new List<string> { "mahdi", "mahshad" };
         var expectedData = new Dictionary<string, List<string>>
         {
@@ -50,18 +50,18 @@ public class ContainOneWordSearchTest
 
         _mockContainOneOfWordSearch.Setup(x => x.SearchText("mahshad")).Returns(expectedData["mahshad"]);
         _mockContainOneOfWordSearch.Setup(x => x.SearchText("mahdi")).Returns(expectedData["mahdi"]);
-        
-        // act
+
+        // Act
         var resultProcessOnWords = _sut.ProcessOnWords(inputData);
 
-        // assert
+        // Assert
         Assert.Equal(result, resultProcessOnWords);
     }
 
     [Fact]
     public void ProcessOnWord_ShouldReturnEmptyList_WhenInputContainNoWord()
     {
-        // arrange
+        // Arrange
         var inputData = new List<string> { };
         var expectedData = new Dictionary<string, List<string>>
         {
@@ -72,11 +72,11 @@ public class ContainOneWordSearchTest
 
         _mockContainOneOfWordSearch.Setup(x => x.SearchText("mahshad")).Returns(expectedData["mahshad"]);
         _mockContainOneOfWordSearch.Setup(x => x.SearchText("mahdi")).Returns(expectedData["mahdi"]);
-        
-        // act
+
+        // Act
         var resultProcessOnWords = _sut.ProcessOnWords(inputData);
 
-        // assert
+        // Assert
         Assert.Equal(result, resultProcessOnWords);
     }
 }

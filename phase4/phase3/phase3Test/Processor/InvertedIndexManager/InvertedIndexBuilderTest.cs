@@ -10,7 +10,7 @@ public class InvertedIndexBuilderTest
     [Fact]
     public void BuildInvertedIndex_ShouldReturnCorrectDictionary_WhenGivenListOfDataFiles()
     {
-        // arrange 
+        // Arrange 
         var dataFiles = new List<DataFile>
         {
             new() { FileName = "file1.txt", Data = "apple banana apple" },
@@ -24,10 +24,10 @@ public class InvertedIndexBuilderTest
             { "orange", new List<string> { "file2.txt" } }
         };
 
-        // act
+        // Act
         var result = _sut.BuildInvertedIndex(dataFiles);
 
-        // assert
+        // Assert
         foreach (var element in expected)
         {
             Assert.True(result.ContainsKey(element.Key));

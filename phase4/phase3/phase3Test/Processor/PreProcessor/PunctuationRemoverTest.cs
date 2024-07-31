@@ -10,7 +10,7 @@ public class PunctuationRemoverTest
     [Fact]
     public void PunctuationRemover_ShouldDeletePunctuation_WhenInputContainsPunctuation()
     {
-        // arrange
+        // Arrange
         var testData = new List<DataFile>
         {
             new() { FileName = "file1", Data = "This is @test- one" },
@@ -21,11 +21,11 @@ public class PunctuationRemoverTest
             new() { FileName = "file1", Data = "This is  test  one" },
             new() { FileName = "file2", Data = "this  is test    two" }
         };
-        
-        // act        
+
+        // Act        
         var resultPunctuationRemover = _sut.Execute(testData);
-        
-        // assert
+
+        // Assert
         Assert.True(expectedTestData.SequenceEqual(resultPunctuationRemover));
     }
 }
