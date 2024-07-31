@@ -4,8 +4,8 @@ namespace phase3Test.IO.InputManager;
 
 public class TextFileReaderTest
 {
-    private string _testDirectory;
-    private TextFileReader _sut;
+    private readonly string _testDirectory;
+    private readonly TextFileReader _sut;
 
     public TextFileReaderTest()
     {
@@ -24,10 +24,11 @@ public class TextFileReaderTest
     {
         // arrange 
         var file1Path = Path.Combine(_testDirectory, "file1.txt");
-
         File.WriteAllText(file1Path, "This is the content of file1.");
+        
         // act
         var result = _sut.ReadFile(_testDirectory);
+        
         // assert
         Assert.Contains(result, f => f.FileName == "file1.txt" && f.Data == "This is the content of file1.");
     }
@@ -37,6 +38,7 @@ public class TextFileReaderTest
     {
         // act
         var result = _sut.ReadFile(_testDirectory);
+        
         // arrange
         Assert.Empty(result);
     }
@@ -46,8 +48,10 @@ public class TextFileReaderTest
     {
         // arrange
         var nonExistentDirectory = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+        
         // act
         Action action = () => _sut.ReadFile(nonExistentDirectory);
+        
         // assert 
         Assert.Throws<DirectoryNotFoundException>(action);
     }

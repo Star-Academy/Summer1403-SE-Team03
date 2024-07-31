@@ -7,19 +7,19 @@ namespace phase3Test.IO.OutPutManager;
 public class ConsoleOutPutTest
 {
     private readonly ConsoleOutput _sut;
-    private readonly Mock<ISearchStrategy> _maockSearchStrategy;
+    private readonly Mock<ISearchStrategy> _mockSearchStrategy;
 
     public ConsoleOutPutTest()
     {
-        _maockSearchStrategy = new Mock<ISearchStrategy>();
-        _sut = new ConsoleOutput(_maockSearchStrategy.Object);
+        _mockSearchStrategy = new Mock<ISearchStrategy>();
+        _sut = new ConsoleOutput(_mockSearchStrategy.Object);
     }
 
     [Fact]
     public void OutputProcess_ShouldReturnUniqueResult_WhenInputContainWordAndResultIsNotEmpty()
     {
         // arrange
-        _maockSearchStrategy.Setup(x => x.ManageSearchStrategy(It.IsAny<string>()))
+        _mockSearchStrategy.Setup(x => x.ManageSearchStrategy(It.IsAny<string>()))
             .Returns(new List<string> { "test1" });
         // act
         var result = _sut.OutputProcess("mahdi");
@@ -31,7 +31,7 @@ public class ConsoleOutPutTest
     public void OutputProcess_ShouldReturnEmptyList_WhenInputContainWordAndResultIsEmpty()
     {
         // arrange
-        _maockSearchStrategy.Setup(x => x.ManageSearchStrategy(It.IsAny<string>())).Returns(new List<string> { });
+        _mockSearchStrategy.Setup(x => x.ManageSearchStrategy(It.IsAny<string>())).Returns(new List<string> { });
         // act
         var result = _sut.OutputProcess("mahdi");
         // assert

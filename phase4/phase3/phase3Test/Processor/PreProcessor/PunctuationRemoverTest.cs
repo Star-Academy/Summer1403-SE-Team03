@@ -21,8 +21,10 @@ public class PunctuationRemoverTest
             new() { FileName = "file1", Data = "This is  test  one" },
             new() { FileName = "file2", Data = "this  is test    two" }
         };
+        
         // act        
         var resultPunctuationRemover = _sut.Execute(testData);
+        
         // assert
         Assert.True(expectedTestData.SequenceEqual(resultPunctuationRemover));
     }

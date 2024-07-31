@@ -28,6 +28,7 @@ public class ContainOneWordSearchTest
 
         _mockContainOneOfWordSearch.Setup(x => x.SearchText("mahshad")).Returns(expectedData["mahshad"]);
         _mockContainOneOfWordSearch.Setup(x => x.SearchText("mahdi")).Returns(expectedData["mahdi"]);
+
         // act
         var resultProcessOnWords = _sut.ProcessOnWords(inputData);
 
@@ -49,6 +50,7 @@ public class ContainOneWordSearchTest
 
         _mockContainOneOfWordSearch.Setup(x => x.SearchText("mahshad")).Returns(expectedData["mahshad"]);
         _mockContainOneOfWordSearch.Setup(x => x.SearchText("mahdi")).Returns(expectedData["mahdi"]);
+        
         // act
         var resultProcessOnWords = _sut.ProcessOnWords(inputData);
 
@@ -70,6 +72,7 @@ public class ContainOneWordSearchTest
 
         _mockContainOneOfWordSearch.Setup(x => x.SearchText("mahshad")).Returns(expectedData["mahshad"]);
         _mockContainOneOfWordSearch.Setup(x => x.SearchText("mahdi")).Returns(expectedData["mahdi"]);
+        
         // act
         var resultProcessOnWords = _sut.ProcessOnWords(inputData);
 

@@ -22,8 +22,10 @@ public class FileProcessorTest
             new() { FileName = "file1.txt", Data = " HELLO WORLD " },
             new() { FileName = "file2.txt", Data = "THIS IS A TEST " }
         };
+        
         // act        
         var result = _sut.ProcessDocumentsForIndexing(initialDataFiles);
+        
         // assert
         Assert.True(expectedDataFiles.SequenceEqual(result));
     }

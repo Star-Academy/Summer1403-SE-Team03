@@ -6,7 +6,7 @@ namespace phase3.Processor.QueryProcessor.SearchStrategy;
 
 public class SearchStrategyTest
 {
-    private readonly SearchStrategy _searchStrategy;
+    private readonly SearchStrategy _sut;
     private readonly Mock<ISearchStrategyFactory> _mockSearchStrategyFactory;
     private readonly Mock<ISearchQueryParser> _mockSearchQueryParser;
     private readonly Mock<ISearchResultsFilter> _mockSearchResultFilter;
@@ -16,7 +16,7 @@ public class SearchStrategyTest
         _mockSearchStrategyFactory = new Mock<ISearchStrategyFactory>();
         _mockSearchQueryParser = new Mock<ISearchQueryParser>();
         _mockSearchResultFilter = new Mock<ISearchResultsFilter>();
-        _searchStrategy = new SearchStrategy(_mockSearchStrategyFactory.Object, _mockSearchQueryParser.Object,
+        _sut = new SearchStrategy(_mockSearchStrategyFactory.Object, _mockSearchQueryParser.Object,
             _mockSearchResultFilter.Object);
     }
 
@@ -56,7 +56,7 @@ public class SearchStrategyTest
             .Returns(new List<string>());
 
         // assert
-        var result = _searchStrategy.ManageSearchStrategy("+test1 test2 -test3");
+        var result = _sut.ManageSearchStrategy("+test1 test2 -test3");
         Assert.IsAssignableFrom<IEnumerable<string>>(result);
     }
 }

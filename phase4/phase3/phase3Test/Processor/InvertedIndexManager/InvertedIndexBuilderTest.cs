@@ -6,6 +6,7 @@ namespace phase3Test.Processor.InvertedIndexManager;
 public class InvertedIndexBuilderTest
 {
     private readonly InvertedIndexBuilder _sut = new InvertedIndexBuilder();
+
     [Fact]
     public void BuildInvertedIndex_ShouldReturnCorrectDictionary_WhenGivenListOfDataFiles()
     {
@@ -25,7 +26,7 @@ public class InvertedIndexBuilderTest
 
         // act
         var result = _sut.BuildInvertedIndex(dataFiles);
-        
+
         // assert
         foreach (var element in expected)
         {

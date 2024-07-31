@@ -11,10 +11,11 @@ public class MustIncludeInputStrategyTest
     {
         // arrange
         List<string> testData = new() { "+salam", "+mahdi", "-sara", "ali" };
-
         List<string> expectedTestData = new() { "ali" };
+        
         // act
         var result = _sut.Apply(testData);
+        
         // assert
         Assert.True(expectedTestData.Count == result.Count);
     }
@@ -22,9 +23,14 @@ public class MustIncludeInputStrategyTest
     [Fact]
     public void MustIncludeInputStrategy_ShouldNotContainAnyWord_WhenInputNotContainAnyWord()
     {
+        // arrange
         List<string> testData = new() { };
         List<string> expectedTestData = new();
+        
+        // act
         var result = _sut.Apply(testData);
+        
+        // assert
         Assert.Equal(expectedTestData, result);
     }
 }

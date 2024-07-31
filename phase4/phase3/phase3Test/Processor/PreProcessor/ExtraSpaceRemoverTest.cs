@@ -1,5 +1,4 @@
 using phase3.Models;
-using phase3.Models;
 using phase3.Processor;
 
 namespace phase3Test.ProcessorTest.PreProcessor;
@@ -24,6 +23,7 @@ public class ExtraSpaceRemoverTest
             new() { FileName = "file2", Data = "H iiiiii" },
             new() { FileName = "file3", Data = "" }
         };
+        
         // act
         var resultExtraSpaceRemover = _sut.Execute(testData);
 

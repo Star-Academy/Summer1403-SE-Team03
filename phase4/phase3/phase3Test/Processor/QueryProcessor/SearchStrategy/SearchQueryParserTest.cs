@@ -4,6 +4,7 @@ namespace phase3Test.Processor.QueryProcessor.SearchStrategy;
 
 public class SearchQueryParserTest
 {
+    private readonly SearchQueryParser _sut = new SearchQueryParser();
     [Fact]
     public void ManageInputSearchStrategy_ShouldReturnFilterListStrategies_WhenInputIsValid()
     {
@@ -13,10 +14,8 @@ public class SearchQueryParserTest
         var expectedWordsShouldBe = new List<string> { "test2" };
         var expectedWordsShouldNotBe = new List<string> { "test3" };
 
-        var manager = new SearchQueryParser();
-
         // Act
-        manager.ManageInputSearchStrategy(input, out var atLeastOne, out var wordsShouldBe,
+        _sut.ManageInputSearchStrategy(input, out var atLeastOne, out var wordsShouldBe,
             out var wordsShouldNotBe);
 
         // Assert

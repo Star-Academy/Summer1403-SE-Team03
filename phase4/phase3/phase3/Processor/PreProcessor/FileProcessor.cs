@@ -9,10 +9,8 @@ public sealed class FileProcessor : IFileProcessor
     public List<DataFile> ProcessDocumentsForIndexing(List<DataFile> docx)
     {
         var operations = new List<ITextOperation>
-            { new ExtraSpaceRemover(), new PunctuationRemover(), new UpperCaseMaker() };
-        List<DataFile> result = docx;
-        foreach (var operation in operations) result = operation.Execute(result);
+            { new PunctuationRemover(), new ExtraSpaceRemover(), new UpperCaseMaker() };
 
-        return result;
+        return operations.Aggregate(docx, (current, operation) => operation.Execute(current));
     }
 }

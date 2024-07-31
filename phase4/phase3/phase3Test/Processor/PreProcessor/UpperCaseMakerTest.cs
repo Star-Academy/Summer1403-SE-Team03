@@ -13,16 +13,18 @@ public class UpperCaseMakerTest
         // arrange
         var testData = new List<DataFile>
         {
-            new() { FileName = "file1", Data = "salaammm khubiiii manam khuuuuuuubam" },
+            new() { FileName = "file1", Data = "tesT1 is HerE" },
             new() { FileName = "file2", Data = "Hiiiiii" }
         };
         var expectedTestData = new List<DataFile>
         {
-            new() { FileName = "file1", Data = "SALAAMMM KHUBIIII MANAM KHUUUUUUUBAM" },
+            new() { FileName = "file1", Data = "TEST1 IS HERE" }, 
             new() { FileName = "file2", Data = "HIIIIII" }
         };
+        
         // act
         var resultUpperMaker = _sut.Execute(testData);
+        
         // assert
         Assert.True(expectedTestData.SequenceEqual(resultUpperMaker));
     }

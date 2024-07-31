@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices.JavaScript;
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Resources;
 using Moq;
 using phase3.FileManager;
 using phase3.Models;
@@ -9,7 +7,7 @@ namespace phase3Test.Processor.QueryProcessor.SearchStrategy;
 
 public class SearchOperationTest
 {
-    private readonly SearchOperation _searchOption;
+    private readonly SearchOperation _sut;
     private readonly Mock<ISearchIndexManager> _mockSearchIndexManager;
     private readonly Mock<IFileReader> _mockTextFileReader;
 
@@ -18,7 +16,7 @@ public class SearchOperationTest
     {
         _mockSearchIndexManager = new Mock<ISearchIndexManager>();
         _mockTextFileReader = new Mock<IFileReader>();
-        _searchOption = new SearchOperation(_mockTextFileReader.Object, _mockSearchIndexManager.Object);
+        _sut = new SearchOperation(_mockTextFileReader.Object, _mockSearchIndexManager.Object);
     }
 
     [Fact]
@@ -42,7 +40,7 @@ public class SearchOperationTest
 
 
         // act
-        var resultProcessOnWords = _searchOption.SearchText("mahdi");
+        var resultProcessOnWords = _sut.SearchText("mahdi");
 
 
         // assert
