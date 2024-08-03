@@ -10,7 +10,7 @@ public class ExtraSpaceRemover : ITextOperation
     {
         if (docs is null)
         {
-            throw new NullReferenceException();
+            throw new NullReferenceException(nameof(docs));
         }
         var result = docs.Select(element => new DataFile
         {

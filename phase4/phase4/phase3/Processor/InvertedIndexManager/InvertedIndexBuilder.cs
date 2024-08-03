@@ -8,7 +8,7 @@ public class InvertedIndexBuilder : IInvertedIndexBuilder
     {
         if (docs is null)
         {
-            throw new NullReferenceException();
+            throw new NullReferenceException(nameof(docs));
         }
         var invertedData = new Dictionary<string, List<string>>();
 

@@ -25,10 +25,10 @@ public class ExtraSpaceRemoverTest
         };
 
         // Act
-        var resultExtraSpaceRemover = _sut.Execute(testData);
+        var result = _sut.Execute(testData);
 
         // Assert
-        Assert.True(expectedTestData.SequenceEqual(resultExtraSpaceRemover));
+        Assert.True(expectedTestData.SequenceEqual(result));
     }
     [Fact]
     public void ExtraSpaceRemover_ShouldReturnStringNotContainExtraSpace_WhenInputNotContainsMultipleSpaces()
@@ -48,10 +48,10 @@ public class ExtraSpaceRemoverTest
         };
 
         // Act
-        var resultExtraSpaceRemover = _sut.Execute(testData);
+        var result = _sut.Execute(testData);
 
         // Assert
-        Assert.True(expectedTestData.SequenceEqual(resultExtraSpaceRemover));
+        Assert.True(expectedTestData.SequenceEqual(result));
     }
     [Fact]
     public void ExtraSpaceRemover_ShouldReturnNullReferenceException_WhenInputHaveNullFile()

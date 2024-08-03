@@ -16,6 +16,6 @@ public class ContainOneOfWordSearch : IInputManagement
             .SelectMany(word => _searchOperation.SearchText(word))
             .ToHashSet()
             .ToList();
-        return finalResult.ToList();
+        return finalResult;
     }
 }
