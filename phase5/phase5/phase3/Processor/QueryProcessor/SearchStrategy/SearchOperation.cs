@@ -20,6 +20,6 @@ public class SearchOperation : ISearchOperation
         var dataFiles = _textFileReader.ReadFile(Resources.dataPath);
         var documents = _searchIndexManager.GetInvertedIndex(dataFiles)
             .GetValueOrDefault(input);
-        return documents ?? [];
+        return documents ?? new List<string>();
     }
 }

@@ -1,6 +1,7 @@
 using Moq;
 using phase3.IO.OutPutManager;
 using phase3.Models;
+using phase3.Processor.QueryProcessor.SearchStrategy.IFilterStrategy;
 
 namespace phase3.Processor.QueryProcessor.SearchStrategy;
 
@@ -10,14 +11,17 @@ public class SearchStrategyTest
     private readonly Mock<ISearchStrategyFactory> _mockSearchStrategyFactory;
     private readonly Mock<ISearchQueryParser> _mockSearchQueryParser;
     private readonly Mock<ISearchResultsFilter> _mockSearchResultFilter;
+    private readonly Mock<IInputSplitHandler> _mockIInputSplitHandler;
 
     public SearchStrategyTest()
     {
         _mockSearchStrategyFactory = new Mock<ISearchStrategyFactory>();
         _mockSearchQueryParser = new Mock<ISearchQueryParser>();
         _mockSearchResultFilter = new Mock<ISearchResultsFilter>();
+        _mockIInputSplitHandler = new Mock<IInputSplitHandler>();
+        
         _sut = new SearchStrategy(_mockSearchStrategyFactory.Object, _mockSearchQueryParser.Object,
-            _mockSearchResultFilter.Object);
+            _mockSearchResultFilter.Object, _mockIInputSplitHandler.Object);
     }
 
     [Fact]

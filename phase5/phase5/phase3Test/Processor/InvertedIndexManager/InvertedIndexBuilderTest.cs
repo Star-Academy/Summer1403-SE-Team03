@@ -1,3 +1,4 @@
+using FluentAssertions;
 using phase3.InvertedIndexManager;
 using phase3.Models;
 
@@ -8,32 +9,39 @@ public class InvertedIndexBuilderTest
     private readonly InvertedIndexBuilder _sut = new InvertedIndexBuilder();
 
     [Fact]
-    public void BuildInvertedIndex_ShouldReturnCorrectDictionary_WhenGivenListOfDataFiles()
+    public void BuildInvertedIndex_ShouldReturnCorrectDictionary_WhenGivenDataFiles()
     {
         // Arrange 
         var dataFiles = new List<DataFile>
         {
-            new() { FileName = "file1.txt", Data = "apple banana apple" },
-            new() { FileName = "file2.txt", Data = "banana orange banana" }
+            new() { FileName = "file1.txt", Data = "apple banana orange strawberry" }
         };
 
         var expected = new Dictionary<string, List<string>>
         {
             { "apple", new List<string> { "file1.txt" } },
-            { "banana", new List<string> { "file1.txt", "file2.txt" } },
-            { "orange", new List<string> { "file2.txt" } }
+            { "banana", new List<string> { "file1.txt" } },
+            { "orange", new List<string> { "file1.txt" } },
+            { "strawberry", new List<string> { "file1.txt" } },
+            
+            { "apple banana", new List<string> { "file1.txt" } },
+            { "banana orange", new List<string> { "file1.txt" } },
+            { "orange strawberry", new List<string> { "file1.txt" } },
+            
+            { "apple banana orange", new List<string> { "file1.txt" } },
+            { "banana orange strawberry", new List<string> { "file1.txt" } },
+            
+            { "apple banana orange strawberry", new List<string> { "file1.txt" } }
+
         };
 
         // Act
         var result = _sut.BuildInvertedIndex(dataFiles);
 
         // Assert
-        foreach (var element in expected)
-        {
-            Assert.True(result.ContainsKey(element.Key));
-            Assert.Equal(element.Value, result[element.Key]);
-        }
+        expected.Should().BeEquivalentTo(result);
     }
+
     [Fact]
     public void BuildInvertedIndex_ShouldReturnNullReferenceException_WhenInputFilesIsNull()
     {

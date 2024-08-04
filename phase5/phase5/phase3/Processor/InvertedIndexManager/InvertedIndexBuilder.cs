@@ -4,40 +4,43 @@ namespace phase3.InvertedIndexManager;
 
 public class InvertedIndexBuilder : IInvertedIndexBuilder
 {
+    private const int MaxPhraseWordCount = 4;
     public Dictionary<string, List<string>> BuildInvertedIndex(List<DataFile> docs)
     {
         if (docs is null)
         {
             throw new NullReferenceException(nameof(docs));
         }
+
         var invertedData = new Dictionary<string, List<string>>();
 
         foreach (DataFile element in docs)
         {
             var words = SpiltData(element);
-            AddOrUpdateWords(words, invertedData, element);
+            for (int length = 1; length <= MaxPhraseWordCount; length++)
+            {
+                for (int start = 0; start <= words.Count - length; start++)
+                {
+                    InvertedHandler(invertedData, element, start, length, words);
+                }
+            }
         }
 
         return invertedData;
     }
 
-    private void AddOrUpdateWords(List<string> words, Dictionary<string, List<string>> invertedData, DataFile element)
+    private void InvertedHandler(Dictionary<string, List<string>> invertedData, DataFile element, int start, int length,
+        List<string> words)
     {
-        foreach (string elementWord in words)
-        {
-            InvertedHandler(invertedData, element, elementWord);
-        }
-    }
+        var phrase = string.Join(" ", words.Skip(start).Take(length));
 
-    private void InvertedHandler(Dictionary<string, List<string>> invertedData, DataFile element, string elementWord)
-    {
-        if (!invertedData.ContainsKey(elementWord))
+        if (!invertedData.ContainsKey(phrase))
         {
-            invertedData.Add(elementWord, new List<string>() { element.FileName });
+            invertedData.Add(phrase, new List<string>() { element.FileName });
         }
-        else if (!invertedData[elementWord].Contains(element.FileName))
+        else if (!invertedData[phrase].Contains(element.FileName))
         {
-            invertedData[elementWord].Add(element.FileName);
+            invertedData[phrase].Add(element.FileName);
         }
     }
 
