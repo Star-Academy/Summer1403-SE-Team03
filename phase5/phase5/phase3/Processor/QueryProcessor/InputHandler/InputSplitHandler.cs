@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using phase3.Models;
 using phase3.Processor.QueryProcessor.SearchStrategy.IFilterStrategy;
 
 namespace phase3.Processor.QueryProcessor.InputHandler;
@@ -7,8 +8,7 @@ public class InputSplitHandler : IInputSplitHandler
 {
     private List<string> ExtractSingleWord(string searchInput) 
     {
-        string pattern = "([+-| ]\"([^\"]*)\")";
-        string singleWords = Regex.Replace(searchInput, pattern, "");
+        string singleWords = Regex.Replace(searchInput, RegexPatternConst.ExtractSingle, "");
         var splitInput = singleWords.Split(" ").ToList();
         List<string> result = new List<string>();
         foreach (var word in splitInput)
@@ -23,11 +23,9 @@ public class InputSplitHandler : IInputSplitHandler
     }
 
     private List<string> ExtractPhrase(string searchInput)
-    {
-        string signRegex = @"([+-]?)\s*""([^""]*)""";
-        string phraseRegex = @"[-+ ]""([^""]*)""";
-        Regex sign = new Regex(signRegex);
-        Regex phease = new Regex(phraseRegex);
+    { 
+        Regex sign = new Regex(RegexPatternConst.SignRegex);
+        Regex phease = new Regex(RegexPatternConst.PhraseRegex);
         List<string> phrases = phease.Matches(searchInput)
             .Cast<Match>()
             .Select(match => match.Groups[1].Value)
