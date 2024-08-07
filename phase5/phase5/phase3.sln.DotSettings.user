@@ -1,38 +1,25 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2170f456_002D2df7_002D4331_002D9e98_002D5d1753265b81/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BuildInvertedIndex_ShouldReturnCorrectDictionary_WhenGivenListOfDataFiles #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::F0BDF817-A1D0-4DE4-AF09-F83DB1ECDE93::net8.0::phase3Test.Processor.InvertedIndexManager.InvertedIndexBuilderTest.BuildInvertedIndex_ShouldReturnCorrectDictionary_WhenGivenListOfDataFiles&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=35c40489_002D73f6_002D47cf_002D9155_002Db65ec625bc26/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BuildInvertedIndex_ShouldReturnCorrectDictionary_WhenGivenListOfDataFiles" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::F0BDF817-A1D0-4DE4-AF09-F83DB1ECDE93::net8.0::phase3Test.Processor.InvertedIndexManager.InvertedIndexBuilderTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F0BDF817-A1D0-4DE4-AF09-F83DB1ECDE93::net8.0::phase3.Processor.QueryProcessor.SearchStrategy.SearchStrategyTest.asddas&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F0BDF817-A1D0-4DE4-AF09-F83DB1ECDE93::net8.0::phase3Test.Processor.QueryProcessor.InputHandler.InputSplitHandlerTest.asddas&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F0BDF817-A1D0-4DE4-AF09-F83DB1ECDE93::net8.0::phase3Test.Processor.QueryProcessor.InputHandler.InputSplitHandlerTest.Dasd&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4becbc4e_002D7a8a_002D4777_002D9c70_002D00721b39bd33/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="assdasadddas" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4becbc4e_002D7a8a_002D4777_002D9c70_002D00721b39bd33/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="assdasadddas" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::F0BDF817-A1D0-4DE4-AF09-F83DB1ECDE93::net8.0::phase3Test.Processor.QueryProcessor.InputHandler.InputSplitHandlerTest.TokenizeInput_ShouldReturnSpiltInputWithPhrase_WhenInputHavePhraseAndWord&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::F0BDF817-A1D0-4DE4-AF09-F83DB1ECDE93::net8.0::phase3Test.Processor.QueryProcessor.SearchStrategy.SearchQueryParserTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=521ff1f9_002D49e2_002D454a_002D8aad_002De9384ac50d30/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Dasd" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=91032780_002D42cd_002D49a9_002D95f7_002Dcf71c2e32a15/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ManageInputSearchStrategy_ShouldReturnFilterListStrategies_WhenInputIsValid #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::F0BDF817-A1D0-4DE4-AF09-F83DB1ECDE93::net8.0::phase3Test.Processor.QueryProcessor.InputHandler.InputSplitHandlerTest.Dasd&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::F0BDF817-A1D0-4DE4-AF09-F83DB1ECDE93::net8.0::phase3Test.Processor.QueryProcessor.SearchStrategy.SearchQueryParserTest.ManageInputSearchStrategy_ShouldReturnFilterListStrategies_WhenInputIsValid&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=78a2b942_002D1fe0_002D4af3_002Da683_002De009a4dae66a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Dasd #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=99491572_002Df404_002D4b88_002D9c6f_002Ddf3330ed1edf/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ManageInputSearchStrategy_ShouldReturnFilterListStrategies_WhenInputIsValid #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::F0BDF817-A1D0-4DE4-AF09-F83DB1ECDE93::net8.0::phase3Test.Processor.QueryProcessor.InputHandler.InputSplitHandlerTest.Dasd&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F0BDF817-A1D0-4DE4-AF09-F83DB1ECDE93::net8.0::phase3Test.Processor.QueryProcessor.InputHandler.InputSplitHandlerTest.asddas&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;xUnit::F0BDF817-A1D0-4DE4-AF09-F83DB1ECDE93::net8.0::phase3Test.Processor.QueryProcessor.InputHandler.InputSplitHandlerTest.assdasadddas&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::F0BDF817-A1D0-4DE4-AF09-F83DB1ECDE93::net8.0::phase3Test.Processor.QueryProcessor.SearchStrategy.SearchQueryParserTest.ManageInputSearchStrategy_ShouldReturnFilterListStrategies_WhenInputIsValid&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=becd4deb_002Dc773_002D49fa_002Db2e5_002D756fa6ee298d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Dasd #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::F0BDF817-A1D0-4DE4-AF09-F83DB1ECDE93::net8.0::phase3Test.Processor.QueryProcessor.InputHandler.InputSplitHandlerTest.Dasd&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+  &lt;Project Location="C:\Users\Mahdi\Desktop\phase 5 new\Summer1403-SE-Team03\phase5\phase5\phase3Test" Presentation="&amp;lt;phase3Test&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=phase3_002FResources/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/ResxEditorPersonal/Initialized/@EntryValue">True</s:Boolean></wpf:ResourceDictionary>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ee776e8e_002D1542_002D4f27_002D98e1_002D355d5b75744b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ManageInputSearchStrategy_ShouldReturnFilterListStrategies_WhenInputIsValid" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::F0BDF817-A1D0-4DE4-AF09-F83DB1ECDE93::net8.0::phase3Test.Processor.QueryProcessor.SearchStrategy.SearchQueryParserTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

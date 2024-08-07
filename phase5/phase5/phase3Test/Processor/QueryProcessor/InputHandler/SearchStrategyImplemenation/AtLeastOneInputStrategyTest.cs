@@ -4,7 +4,7 @@ namespace phase3Test.Processor.QueryProcessor.InputHandler.SearchStrategyImpleme
 
 public class AtLeastOneInputStrategyTest
 {
-    private readonly AtLeastOneInputStrategy _sut = new AtLeastOneInputStrategy();
+    private readonly AtLeastOneAtLeastOneInputStrategy _sut = new AtLeastOneAtLeastOneInputStrategy();
 
     [Fact]
     public void AtLeastOneInputStrategy_ShouldSplitPluses_WhenInputContainPlusSign()

@@ -3,8 +3,9 @@ using phase3.Processor.QueryProcessor.SearchStrategy.IFilterStrategy;
 
 namespace phase3.Processor.QueryProcessor.SearchStrategy.SearchStrategyImplemention;
 
-public class AtLeastOneInputStrategy : IInputSearchStrategy
+public class AtLeastOneAtLeastOneInputStrategy : IAtLeastOneInputStrategy
 {
+    
     public List<string> Apply(IReadOnlyList<string> inputWords)
     {
         List<string> atLeastOne = new List<string>();

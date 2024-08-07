@@ -14,7 +14,7 @@ public class InputSplitHandlerTest
     public void TokenizeInput_ShouldReturnSpiltInputWithPhrase_WhenInputHavePhraseAndWord()
     {
         string test = @"get +illness +""star academy"" -""apple""  ""orange banana"" sad";
-        List<string> expected = new List<string>() { "get", "+illness", "sad", "+star academy", "-apple","orange banana" };
+        var expected = new List<string>() { "get", "+illness", "sad", "+star academy", "-apple","orange banana" };
         var result = _sut.TokenizeInput(test);
         Assert.Equal(expected,result);
 

@@ -3,7 +3,7 @@ using phase3.Processor.QueryProcessor.SearchStrategy.IFilterStrategy;
 
 namespace phase3.Processor.QueryProcessor.SearchStrategy.SearchStrategyImplemention;
 
-public class MustIncludeInputStrategy : IInputSearchStrategy
+public class MustIncludeInputStrategy : IMustIncludeInputStrategy
 {
     public List<string> Apply(IReadOnlyList<string> inputWords)
     {

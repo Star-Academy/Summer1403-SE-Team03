@@ -28,9 +28,9 @@ public class SearchStrategyTest
     public void ProcessOnWord_ShouldReturnEmptyList_WhenInputContainNoWord()
     {
         // Arrange
-        List<string> atLeastOne = new();
-        List<string> wordsShouldBe = new();
-        List<string> wordsShouldNotBe = new();
+        var atLeastOne = new List<string>();
+        var wordsShouldBe = new List<string>();
+        var wordsShouldNotBe = new List<string>();
         var expectedData = new List<string>();
         
         _mockSearchQueryParser
