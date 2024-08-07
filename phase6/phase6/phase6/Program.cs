@@ -1,4 +1,5 @@
 using phase6.Services.Processor.QueryProcessor.InputHandler;
+using phase6.Services.Processor.QueryProcessor.InputHandler.Abstractions;
 using phase6.Services.Processor.QueryProcessor.InputHandler.SearchStrategyImplemention;
 using phase6.Services.Processor.QueryProcessor.InputHandler.SearchStrategyImplemention.Abstractions;
 using phase6.Services.Processor.QueryProcessor.SearchStrategy;
@@ -10,19 +11,24 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddTransient<ISearchStrategyFactory,SearchStrategyFactory>();
-builder.Services.AddTransient<ISearchQueryParser,SearchQueryParser>();
-builder.Services.AddTransient<ISearchResultsFilter,SearchResultsFilter>();
-builder.Services.AddTransient<InputSplitHandler,InputSplitHandler>();
+builder.Services.AddSingleton<ISearchStrategyFactory, SearchStrategyFactory>();
+builder.Services.AddTransient<ISearchResultsFilter, SearchResultsFilter>();
+builder.Services.AddTransient<IInputSplitHandler, InputSplitHandler>();
 builder.Services.AddTransient<IAtLeastOneInputStrategy, AtLeastOneAtLeastOneInputStrategy>();
 builder.Services.AddTransient<IMustIncludeInputStrategy, MustIncludeInputStrategy>();
 builder.Services.AddTransient
     <IMustNotContainInputStrategy, MustNotContainInputStrategy>();
-builder.Services.AddTransient<SearchStrategy>(provider => new SearchStrategy(
-    provider.GetRequiredService<SearchStrategyFactory>(),
-    provider.GetRequiredService<SearchQueryParser>(),
-    provider.GetRequiredService<SearchResultsFilter>(),
-    provider.GetRequiredService<InputSplitHandler>()
+
+builder.Services.AddTransient<ISearchQueryParser, SearchQueryParser>(provider =>
+    new SearchQueryParser(provider.GetRequiredService<IAtLeastOneInputStrategy>(),
+        provider.GetRequiredService<IMustIncludeInputStrategy>(),
+        provider.GetRequiredService<IMustNotContainInputStrategy>()));
+
+builder.Services.AddTransient<ISearchStrategy,SearchStrategy>(provider => new SearchStrategy(
+    provider.GetRequiredService<ISearchStrategyFactory>(),
+    provider.GetRequiredService<ISearchQueryParser>(),
+    provider.GetRequiredService<ISearchResultsFilter>(),
+    provider.GetRequiredService<IInputSplitHandler>()
 ));
 
 builder.Services.AddControllers();
