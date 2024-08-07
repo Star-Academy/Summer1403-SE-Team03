@@ -6,7 +6,7 @@ namespace phase3.Processor.QueryProcessor.InputHandler;
 
 public class InputSplitHandler : IInputSplitHandler
 {
-    private List<string> ExtractSingleWord(string searchInput) 
+    private List<string> ExtractSingleWord(string searchInput)
     {
         string singleWords = Regex.Replace(searchInput, RegexPatternConst.ExtractSingle, "");
         var splitInput = singleWords.Split(" ").ToList();
@@ -23,7 +23,7 @@ public class InputSplitHandler : IInputSplitHandler
     }
 
     private List<string> ExtractPhrase(string searchInput)
-    { 
+    {
         Regex sign = new Regex(RegexPatternConst.SignRegex);
         Regex phease = new Regex(RegexPatternConst.PhraseRegex);
         List<string> phrases = phease.Matches(searchInput)

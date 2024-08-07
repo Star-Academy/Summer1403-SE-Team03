@@ -33,4 +33,6 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::F0BDF817-A1D0-4DE4-AF09-F83DB1ECDE93::net8.0::phase3Test.Processor.QueryProcessor.InputHandler.InputSplitHandlerTest.Dasd&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+&lt;/SessionState&gt;</s:String>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=phase3_002FResources/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/Initialized/@EntryValue">True</s:Boolean></wpf:ResourceDictionary>
